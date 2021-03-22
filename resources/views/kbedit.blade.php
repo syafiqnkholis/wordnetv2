@@ -1,7 +1,34 @@
 @extends('baselayout')
 @section('title', '- Edit Kata Benda')
 @section('content')
+        <div class="row">
+        <div class="col-md-3 wrapper">
+            <!-- <div class="d-flex" id="wrapper"> -->
+                <div class=" border-right" id="sidebar-wrapper">
+                    <div class="list-group list-group-flush">
+                        <a href="#" class="list-group-item list-group-item-action font" style="background-color: #00587A;">Tambah hipernim</a>
+                        <a href="#" class="list-group-item list-group-item-action font" style="background-color: #0F3057;">Kelola hipernim</a>
+                    </div>
+                    <br>
+                    <div class="kolomkata">
+                            <div class="form-group">
+                                <label >pilih kata</label>
+                                <input type="text" class="form-control mb-2 search" placeholder="search">
+                            
+                                <select multiple class="form-control search  " id="listkata" style="height:300px";>
+                                <option>properti</option>
+                                <option>meja</option>
+                                <option>kursi</option>
+                                <option>buku</option>
+                                <option>karpet</option>
+                                </select>
+                            </div>
+                    </div>
+                </div>
+        </div>
+
         <!-- konten tengah  =============================================== --> 
+
         <div class="col-md-6 wrapper">
             <div class="row">
                 <div class="col-md-12 mt-2" >
@@ -119,6 +146,8 @@
             </div>
                 </div>
             </div>
+
+        </div>
         </div>
     <script>
         $('#listkata').on('change', function(){
