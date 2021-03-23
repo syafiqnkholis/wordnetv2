@@ -17,11 +17,6 @@
         <!-- Styles -->
         <style>
     /* css navbar */
-        .input{
-            font-family: FontAwesome, sans-serif;
-            opacity: 0.7;
-        }
-
         .titlehp{
             font-family: 'Baloo Tammudu 2', cursive;
             font-size: 30px;
@@ -47,11 +42,6 @@
             color: #e7e7de;
         }
 
-        .bg{
-            background-image: url("/img/Gedung-Perpustakaan-UGM-by-aghniahifdzi.jpg");
-            width: 100%;
-            height: 100%;
-        }
 
         .navbar-nav{
                 color:#fff;
@@ -165,7 +155,6 @@
         </nav>
 
     @yield('content')
-        </div>
 
         <div class="footer" >
             <p style="float: right;">&copy; 2020</p>
