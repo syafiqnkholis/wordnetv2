@@ -150,9 +150,11 @@
         </div>
         </div>
     <script>
+        //list kata muncul di kolom edit
         $('#listkata').on('change', function(){
             $('#editkata').val(this.value);
         });
+        //radio button salah satu disable
         $('#exampleRadios1').on('change', function(){
             $('#tambahHipernim input[type=text]').prop('disabled',false);
             $('#pilihHipernim input[type=text]').prop('disabled',true);

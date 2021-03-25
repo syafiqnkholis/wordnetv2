@@ -161,12 +161,6 @@
         </div>
 
     </body>
-
-    <script>    
-    $('.search').click(function(){
-        $('.search').css("opacity","1");
-        
-    });
     
     </script>
 </html>
