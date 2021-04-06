@@ -43,12 +43,12 @@
         }
 
 
-        .navbar-nav{
-                color:#fff;
+        .navbar{
+            width: 23%;
         }
         .wrapper {
             height: 100%;
-            padding-top: 60px;
+            /* padding-top: 60px; */
         }
         #sidebar-wrapper {
             position:fixed;
@@ -65,15 +65,16 @@
             padding: 0 20px 0 20px;
         }
             .isihip{
-            border-style: solid;
-            border-width: 1px;
-            border-radius: 5px;
-            border-color:#ced4da ;
+            border: solid;
+            border-color: #0F3057;
+            border-width: thin;
             padding: 1px;
             background-color: #fff;
+            margin-bottom: 5px;
             }
             .search{
                 opacity: 0.5;
+                font-family: FontAwesome, sans-serif;
             }
             .footer {
                 position: fixed;
@@ -145,14 +146,12 @@
     <body>
     
         <!-- navbar ================================================= -->
-        <nav class="navbar fixed-top " style="background-color: #0F3057; justify-content:left">
+        <!-- <nav class="navbar fixed-top " style="background-color: #0F3057; justify-content:left">
             <a class="navbar-brand" href="/" style="font-family: times new romance; color:#939698">
             <img src="https://ugm.ac.id/images/optimasi/ugm_header.png" width="25" height="25" alt="">
                 WordNet UGM
             </a>
-            <div class="navbar-nav">
-            </div>
-        </nav>
+        </nav> -->
 
     @yield('content')
 

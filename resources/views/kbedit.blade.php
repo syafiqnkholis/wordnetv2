@@ -3,40 +3,20 @@
 @section('content')
         <div class="row">
         <div class="col-md-3 wrapper">
-            <!-- <div class="d-flex" id="wrapper"> -->
-                <div class=" border-right" id="sidebar-wrapper">
-                    <div class="list-group list-group-flush">
-                        <a href="#" class="list-group-item list-group-item-action font" style="background-color: #00587A;">Tambah hipernim</a>
-                        <a href="#" class="list-group-item list-group-item-action font" style="background-color: #0F3057;">Kelola hipernim</a>
-                    </div>
-                    <br>
-                    <div class="kolomkata">
-                            <div class="form-group">
-                                <label >pilih kata</label>
-                                <input type="text" class="form-control mb-2 search" placeholder="search">
-                            
-                                <select multiple class="form-control search  " id="listkata" style="height:300px";>
-                                <option>properti</option>
-                                <option>meja</option>
-                                <option>kursi</option>
-                                <option>buku</option>
-                                <option>karpet</option>
-                                </select>
-                            </div>
-                    </div>
-                </div>
+        @include('sidelayout')
         </div>
 
         <!-- konten tengah  =============================================== --> 
 
         <div class="col-md-6 wrapper">
             <div class="row">
-                <div class="col-md-12 mt-2" >
+                <div class=" col-md-6" >
                     Edit kata
-                    <input id="editkata" type="text" class="form-control mb-1" placeholder="masukkan kata" style="width: 40%;">
+                    <input id="editkata" type="text" class="form-control mb-1" placeholder="masukkan kata" style="width: 100%;">  
+                </div>
+                <div class="col-md-6">
                     Edit deskripsi
-                    
-                    <input type="text" class="form-control" placeholder="deskripsi">
+                    <textarea id="desc" class="form-control" rows="1" ></textarea>
                 </div>
             </div>   
 
@@ -46,62 +26,17 @@
                     Ubah susunan hipernim
                     <!-- susunan hipernim / row =================================== -->
                     <div>
-                        hipernim 1
-                        <div class="isihip mb-2" style="padding-left: 5px;">    
-                            <tr>
-                                <td> Peranti elektronik</td></br>
-                                <td> ➨ Perangkat yang mengandung kendali konduksi elektron</td>                      
-                            </tr>
-                        </div>
-                        hipernim 2
-                        <div class="isihip mb-2" style="padding-left: 5px;">    
-                            <tr>
-                                <td> Peranti</td></br>
-                                <td> ➨ Suatu alat yang dibutuhkan untuk suatu usaha atau untuk melakukan layanan</td>                      
-                            </tr>
-                        </div>
-                        hipernim 3
-                        <div class="isihip mb-2 " style="padding-left: 5px;"> 
-                            <div class="row">
-                                <div class="col-md-10">
-                                <tr>
-                                    <td> Instrumentasi</td></br>
-                                    <td> ➨ Artefak (atau sistem artefak) yang berperan penting dalam mencapai suatu tujuan</td>                      
-                                </tr>
-                                </div> 
-                                <div class="ol-md-2">
-                                <button type="button" class="btn btn-danger mt-3" style="width: 80px;">batal</button>
-                                </div> 
+                        
+                        <div class="row" >
+                        <div class="col-md-12">
+                            <div id="listContainer" class="col-md-12 mt-1" >
                             </div>
+                                <div id="containerHipernim">
+                                </div>
+                            </div>
+                            
                         </div>
-                        hipernim 4
-                        <div class="isihip mb-2" style="padding-left: 5px;">    
-                            <tr>
-                                <td> Keseluruhan. satuan</td></br>
-                                <td> ➨ Kumpulan bagian yang dianggap sebagai entitas tunggal; "seberapa besar bagian itu dibandingkan dengan keseluruhan?"; "tim adalah unit"</td>                      
-                            </tr>
-                        </div>
-                        hipernim 5
-                        <div class="isihip mb-2" style="padding-left: 5px;">    
-                            <tr>
-                                <td> benda, benda fisik</td></br>
-                                <td> ➨ Entitas yang nyata dan terlihat; suatu entitas yang dapat memberikan bayangan; "wadah itu penuh dengan raket, bola dan benda-benda lainnya"</td>                      
-                            </tr>
-                        </div>
-                        hipernim 6
-                        <div class="isihip mb-2" style="padding-left: 5px;">    
-                            <tr>
-                                <td> Wujud fisik</td></br>
-                                <td> ➨ Suatu entitas yang memiliki keberadaan fisik</td>                      
-                            </tr>
-                        </div>
-                        hipernim 7
-                        <div class="isihip mb-2" style="padding-left: 5px;">    
-                            <tr>
-                                <td> Benda</td></br>
-                                <td> ➨ Apa yang dianggap atau diketahui atau disimpulkan memiliki keberadaannya sendiri yang berbeda (hidup atau tidak hidup)</td>                      
-                            </tr>
-                        </div>
+
                     </div>
                 </div>
                 
@@ -117,7 +52,7 @@
         <!-- konten samping kanan =============================================== -->
         <div class="col-md-3 wrapper">
             <div class=" mt-2">
-            Edit hipernim
+            Kelola hipernim
                 <div class="isihip" style="width: 95%;" >
                     <div class="ml-2" id="tambahHipernim">
                         <input type="radio" name="exampleRadios" id="exampleRadios1" value="option1"> 
@@ -152,7 +87,33 @@
     <script>
         //list kata muncul di kolom edit
         $('#listkata').on('change', function(){
-            $('#editkata').val(this.value);
+            var idNoun = this.value;
+            $.get('/api/noun', 
+                { "id_kb": idNoun },
+                function(data) {
+                    $("#editkata").val(data['nama_kb']);
+                    $("#desc").val(data['desc_kb']);
+                    $.each(data['relations'], function(i,hipernim){
+                      var hipernimItem = `
+                       <div class="row isihip"> 
+                            <div class="col-md-10">
+                                <div id="tambahh isihip">
+                                        `+hipernim['hipernim'].hipernim+`</br>
+                                        ➨ <span class="ml-3"> `+hipernim['hipernim'].desc_hipernim+` <span>
+                                </div>
+                                
+                            </div>
+                            <div class="col-md-2">
+                                <div col-md-6>
+                                <button type="button" id="btnOk" class="btn btn-success " style="width: 80px;">edit</button>
+                                </div>
+                            </div>
+                        </div>
+                       `;
+                       $("#containerHipernim").append(hipernimItem);
+                    });
+                }
+            )
         });
         //radio button salah satu disable
         $('#exampleRadios1').on('change', function(){
@@ -163,5 +124,31 @@
             $('#tambahHipernim input[type=text]').prop('disabled',true);
             $('#pilihHipernim input[type=text]').prop('disabled',false);
         });
+        //opacity naik
+        // $('.search').on('focus',function(){
+        //     $isFocused = $(this).is(":focus");
+        //     console.log($isFocused);
+        //     $(this).css("opacity","1");
+        // });
+    
+        // $('.search').on('focusout',function(){
+        //     $isFocused = $(this).is(":focus");
+        //     $(this).css("opacity","0.5");
+        // });
+
+        // search
+        // $('.search').on('input', function(){
+        //     $.get('/api/pencarian/noun', 
+        //         { "searchnoun": $(this).val() },
+        //         function(data) {
+        //             console.log("tes");
+        //             $("#listkata").html("");
+        //             $.each(data, function(i,kb){
+        //                 $("#listkata").append('<option value='+kb['id_kb']+'>'+kb['nama_kb']+'</option>');
+        //             });
+        //         }
+        //     )
+        // });
+        
     </script>
 @endsection

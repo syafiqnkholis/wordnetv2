@@ -18,3 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::get('/pencarian/noun', 'SearchController@searchnoun')->name('carikata');
+Route::get('/noun', 'SearchController@getNoun')->name('getNoun');

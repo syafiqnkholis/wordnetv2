@@ -19,11 +19,15 @@
     /* css navbar */
 
         .bg{
-            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/img/Gedung-Perpustakaan-UGM-by-aghniahifdzi.jpg');
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
+            url('/img/Gedung-Perpustakaan-UGM-by-aghniahifdzi.jpg');
             width: 100%;
-            height: 100%;
+            background-attachment: fixed;
         }
 
+        .full-height {
+            height: 100%
+        }
         .setting{
             float: left; 
             margin-left:100px;
@@ -33,12 +37,17 @@
         .setting:hover{
             background-color:#0F3057;
             color: #e7e7de;
+        
         }
         .container{
             width: 620px;
             background-color: #fff;
             z-index: 1000;
             border-radius: 5px;
+            font-size: 15px; 
+            margin-bottom: .5rem;
+            padding: 32px;
+            /* display:none; */
         }
         .input{
             font-family: FontAwesome, sans-serif;
@@ -71,6 +80,10 @@
             background-color:#00587A;
             color: #e7e7de;
         }
+
+        /* .hp:active{
+            
+        } */
 
         .navbar-nav{
                 color:#fff;
@@ -120,15 +133,19 @@
             color: #fff;
         }
             
-        .footer {
+        .sideup {
             position: fixed;
             left: 0;
             bottom: 0;
             width: 100%;
-            background-color: #0F3057;
+            background-color: rgb(0, 0, 0,0.5);
             color: white;
             text-align: center;
             }
+
+        .container:last-child{
+            margin-bottom: 70px;
+        }
 
         .konten row{
                     display: inline block;
@@ -188,7 +205,7 @@
 
 
     </head>
-    <body>
+    <body class="bg" style="padding-bottom: 26px;">
     <div class="row bg" style="margin:0">
     <div class="col-md-3 mt-3">
             <div class="mt-1">
@@ -212,43 +229,7 @@
                     </div>
                 </div>
             </div>
-
             </div>
-            
-
-        <!-- <div class="mt-4">
-                <button type="button" class="btn btn-default hp ml-4 mb-2 " style="width: 200px">
-                <i class="fas fa-cog mt-1 mr-2" style="float: left;"></i><b style="float:left">Pengaturan</b>
-                </button>
-        </div> -->
-        <!-- <div class="kolomkata">
-            <div class="form-group">
-                <h6> Rekomendasi kata</h6>
-                <select multiple class="form-control" id="listkata" style="height:400px; width:200px";>
-                    <option>properti</option>
-                    <option>meja</option>
-                    <option>kursi</option>
-                    <option>buku</option>
-                    <option>karpet</option>
-                    <option>properti</option>
-                    <option>meja</option>
-                    <option>kursi</option>
-                    <option>buku</option>
-                    <option>karpet</option>
-                    <option>properti</option>
-                    <option>meja</option>
-                    <option>kursi</option>
-                    <option>buku</option>
-                    <option>karpet</option>
-                    <option>properti</option>
-                    <option>meja</option>
-                    <option>kursi</option>
-                    <option>buku</option>
-                    <option>karpet</option>
-                </select>
-            </div>
-        </div> -->
-        
     </div>
 
    
@@ -257,15 +238,14 @@
 
         <div class="col-md-6 mt-3">
             <div class="row">
-                <div class="col-md-12 mt-4" >
-                    <h6 class="titlehp mt-4 ml-3 desc">WordNet UGM</h6>
-                    <p class="ml-3 desc desc-lay">WordNet® UGM merupakan sistem WordNet berbahasa Indonesia yang dikembangkan oleh dosen dan mahasiswa UGM. WordNet ini dibangun dengan maksud untuk membantu pengguna dalam menemukan makna suatu kata, relasi antar kata, dan kedalaman antar kata. Yang difokuskan dalam WordNet ini yakni penggunaan hipernim dan hiponim kata. Sehingga diharapkan sistem ini dapat membantu pengguna dalam membantu memberikan informasi dan tolak ukur dalam kegiatan penulisan berbahasa Indonesia.</p>
+                <div class="col-md-12 mt-2" >
                     <div class="mt-4">
                     <input type="text" id="inputquery" class="form-control mr-1 input" name="searchnoun" placeholder="&#xF002; cari" >
                     </div>
+                    
                 </div>
-                <div class="container mt-2 ml-1" style="font-size: 15px; display:none" >
-                    <h6>CPU</h6>
+                <div class="mt-2 ml-1" id="resultContainer">
+                    <!-- <h6>CPU</h6>
                     <p>(n) CPU, UPP, Unit Pengolah Pusat, pengolah pusat, ( bidang komputer ) bagian komputer yang paling banyak melakukan pengolahan data.</p>
                     <div class=" mb-2" >
                     <tr>
@@ -285,28 +265,39 @@
                         <td> ➨ Perangkat yang mengandung kendali konduksi elektron</td><br>
                         <td> Peranti</td></br>
                         <td> ➨ Suatu alat yang dibutuhkan untuk suatu usaha atau untuk melakukan layanan</td>               
-                    </tr>
+                    </tr> -->
                     </div>  
                 </div>
             </div> 
-        </div>
-
-
+            
+            
         <!-- konten samping kanan =============================================== -->
         <div class="col-md-3 wrapper">
 
             <div class="mt-1">
-                <button class="btn setting" style="float: right;color: #fff;">
+                <button class="btn setting" style="float: left;color: #fff;">
                 <i class="fas fa-cog fa-sm mt-1 mr-1 mb-1" style="color: #fff;" ></i> Pengaturan 
             </button>
             </div>
-            
-            
+            </div>
         </div>
     </div>
-    <div class="footer" style="height: 30px;">
-            <p class="mt-2 mr-2" style="float: right;">&copy; 2020</p>
+    
+    
+        <div class="sideup">
+            <button class="btn mt-2" id="informasi" style="color:#fff">
+                <i class="fas fa-chevron-circle-up mt-1 mr-1 mb-1" style="color: #fff;" ></i>
+                <span>Tampilkan informasi</span>
+            </button>
+            <div id="desc" style="padding-left: 350px; padding-right: 330px;padding-bottom:150px ;display:none; "> 
+                <h6 class="titlehp mt-2 ml-3 ">WordNet UGM</h6>
+                <p class="ml-3  desc-lay">WordNet® UGM merupakan sistem WordNet berbahasa Indonesia yang dikembangkan oleh dosen dan mahasiswa UGM. WordNet ini dibangun dengan maksud untuk membantu pengguna dalam menemukan makna suatu kata, relasi antar kata, dan kedalaman antar kata. Yang difokuskan dalam WordNet ini yakni penggunaan hipernim dan hiponim kata. Sehingga diharapkan sistem ini dapat membantu pengguna dalam membantu memberikan informasi dan tolak ukur dalam kegiatan penulisan berbahasa Indonesia.</p>
+                <h6 class="titlehp mt-2 ml-3" style="font-size: 30px;">Jarak Kata</h6>
+                <p class=" ml-3  desc-lay" > Jarak kata merupakan salah satu fitur dalam WordNet UGM yang mana berguna untuk menghitung jarak hubungan tiap katanya. Kata yang dapat dicari jaraknya hanyalah kata yang berkategori kata benda. Fitur ini diharapkan dapat bermanfaat untuk membantu pengguna dalam menentukan kedekatan hubungan antara kata benda satu dengan kata benda lainnya, serta membantu dalam proses pelatihan bahasa untuk kecerdasan buatan.</p>
+            </div>
+            <!-- <p class="mt-2 mr-2" style="float: right;">&copy; 2020</p> -->
     </div>
+</div>
 
 
     <script>
@@ -323,30 +314,58 @@
         $(this).css("opacity","1");
     });
     
-    // $('#inputquery').on('focusout',function(){
-    //     $isFocused = $(this).is(":focus");
-    //     console.log($isFocused);
-    //     $('.desc').attr("hidden",false);
-    // });
+    $('#inputquery').on('focusout',function(){
+        $isFocused = $(this).is(":focus");
+        console.log($isFocused);
+        $(this).css("opacity","0.5");
+    });
 
-    // $('#inputquery').on('input',function(){
-    //     $.ajax({
-    //            type:'GET',
-    //            url:'/api/pencarian/noun',
-    //            data: $(this).val(),
-    //            success:function(data) {
-    //                console.log(data);
-    //               alert("success");
-    //            }
-    //         });
-    // });
+    $('#inputquery').on('input', function(){
+        $.get('/api/pencarian/noun', 
+        { "searchnoun": $(this).val() },
+        function(data) {
+            $("#resultContainer").html("");
+            $.each(data, function(i,kb){
+                var relationElement = "";
+                $.each(kb['relations'], function(i,relation){
+                    relationElement += `
+                    `+relation['hipernim'].hipernim+`</br>
+                        ➨ `+relation['hipernim'].desc_hipernim+`<br>
+                    `
+                    });
+                var element = `
+                <div class="container mt-2 ml-1 result">
+                    <h6>`+kb['nama_kb']+`</h6>
+                    <p>`+kb['desc_kb']+`</p>
+                    <div class=" mb-2" >
+                    `
+                    +relationElement+
+                    `
+                    </div>
+                </div>
+                `;
+                $("#resultContainer").append(element);
+                // $("body").height = resultHeight;
+            });
+            $("body").removeClass("full-height");
+                var resultHeight = $("#resultContainer").height;
+                $("body").height = resultHeight;
+        }
+        )
+    });
 
-    //list rekomendasi kata 
-        // $('#listkata').on('change', function(){
-        //     $('.input').val(this.value);
-        // });
-       
-        
+    //side up info
+
+    $(document).ready(function(){
+        var isHide = false;
+        $("#informasi").click(function(){
+            $("#desc").slideToggle(300);
+            $("i", this).toggleClass("fas fa-chevron-circle-up fas fa-chevron-circle-down");
+            $("#informasi span").text(($("#informasi span").text() == 'Tampilkan informasi') ? 'Sembunyikan informasi' : 'Tampilkan informasi');
+            // $("#informasi").text("tampikan");
+        });
+    });
+
     </script>
     </body>
 </html>
