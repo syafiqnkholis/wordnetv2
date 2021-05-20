@@ -25,4 +25,10 @@ Route::get('/kbedit', function () {
     return view('kbedit');
 });
 
+Route::get('/kbtable', function () {
+    return view('kbtable');
+});
+
+Route::get('/hipernim','SearchController@searchhipernim');
+Route::get('admin/api/product','InvoiceController@getAutocompleteData'); 
 

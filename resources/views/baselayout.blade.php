@@ -8,15 +8,31 @@
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">  
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@800&display=swap" rel="stylesheet">   
-        <script src="https://kit.fontawesome.com/7563762252.js" crossorigin="anonymous"></script>  
+        <link href="https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@800&display=swap" rel="stylesheet"> 
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Krona+One&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/7563762252.js" crossorigin="anonymous"></script>
+        
         <title>WordNet UGM @yield('title')</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+        <link href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css"/>
         <!-- Styles -->
+        <link type="text/css" rel="stylesheet" href="{{ asset('style.css') }}">
+        <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+        <!-- <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script> -->
+         <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+        <!-- <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
+    
+        <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css"> -->
+
+        
         <style>
     /* css navbar */
+
+
         .titlehp{
             font-family: 'Baloo Tammudu 2', cursive;
             font-size: 30px;
@@ -49,6 +65,8 @@
         .wrapper {
             height: 100%;
             /* padding-top: 60px; */
+            padding-left: 150px;
+            padding-right: 150px;
         }
         #sidebar-wrapper {
             position:fixed;
@@ -60,20 +78,29 @@
         }
         .font {
             color: #e7e7de;
+            background-color: #00587A;
+        }
+
+        .font:hover{
+            background-color: #0F3057;
+        }
+        .active{
+            background-color: #0F3057 !important;
         }
         .kolomkata{
             padding: 0 20px 0 20px;
+
         }
             .isihip{
             border: solid;
             border-color: #0F3057;
             border-width: thin;
-            padding: 1px;
-            background-color: #fff;
+            padding: 1px 10px 10px 10px;
+            background-color: #0F3057;
             margin-bottom: 5px;
+            font-size: 14px;
             }
             .search{
-                opacity: 0.5;
                 font-family: FontAwesome, sans-serif;
             }
             .footer {
@@ -144,14 +171,13 @@
 
     </head>
     <body>
-    
-        <!-- navbar ================================================= -->
-        <!-- <nav class="navbar fixed-top " style="background-color: #0F3057; justify-content:left">
+
+        <nav class="navbar" style="width:100%; background-color: #0F3057; justify-content:left">
             <a class="navbar-brand" href="/" style="font-family: times new romance; color:#939698">
             <img src="https://ugm.ac.id/images/optimasi/ugm_header.png" width="25" height="25" alt="">
-                WordNet UGM
+            WordNet UGM
             </a>
-        </nav> -->
+        </nav>
 
     @yield('content')
 
@@ -160,6 +186,6 @@
         </div>
 
     </body>
-    
+    <script>
     </script>
 </html>
