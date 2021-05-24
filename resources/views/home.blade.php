@@ -114,8 +114,8 @@
     
     
         <div class="sideup">
-            <button class="btn mt-3" id="informasi" style="color:#fff">
-                <i class="fas fa-chevron-circle-up mt-1 mr-1 mb-1" style="color: #fff;" ></i>
+            <button class="btn mt-3" id="informasi" style="color:#8c8c8c">
+                <i class="fas fa-chevron-circle-up mt-1 mr-1 mb-1" style="color: #8c8c8c;" ></i>
                 <span>Tampilkan informasi</span>
             </button>
             <div id="desc" style="padding-left: 350px; padding-right: 330px;padding-bottom:150px ;display:none; "> 

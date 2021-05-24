@@ -113,7 +113,7 @@
                 simpanId+"___"+$hipernim+"___"+$deskripsi
             );
             simpanId=0;
-            console.log($hipernims);
+            console.log($hipernim);
             
             $('#hipernim').val("")
             $('#deskripsi').val("")

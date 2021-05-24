@@ -121,7 +121,7 @@
                 </button>
                 <div id="London" class="w3-container city">
                 <h2></h2>
-                <p>London is the capital city of England.</p>
+                
                 </div>
 
                 <div id="Paris" class="w3-container city" style="display:none">
