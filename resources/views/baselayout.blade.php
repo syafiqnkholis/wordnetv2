@@ -20,7 +20,9 @@
         <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
         <link href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css"/>
         <!-- Styles -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
         <link type="text/css" rel="stylesheet" href="{{ asset('style.css') }}">
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
         <!-- <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script> -->
          <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
@@ -30,6 +32,9 @@
 
         
         <style>
+        .bg{
+
+        }
     /* css navbar */
 
 
@@ -178,11 +183,13 @@
             WordNet UGM
             </a>
         </nav>
-
+    
+    <div class="">
     @yield('content')
+    </div>
 
         <div class="footer" >
-            <p style="float: right;">&copy; 2020</p>
+            <p style="float: right;">&copy; 2021</p>
         </div>
 
     </body>

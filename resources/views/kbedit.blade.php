@@ -163,35 +163,47 @@
 
     </div>
     <script>
+        $(document).ready( function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const idNoun  = urlParams.get('id');
+            fillValues(idNoun)
+        } );
+
         //list kata muncul di kolom edit
         $('#listkata').on('change', function(){
             var idNoun = this.value;
+            fillValues(idNoun);
+        });
+
+        function fillValues(idNoun){
+            
             $.get('/api/noun', 
                 { "id_kb": idNoun },
                 function(data) {
-            $("#kbedittabel > tr").remove()
-            var hipernimItem = ""
+                    $("#kbedittabel > tr").remove()
+                    var hipernimItem = ""
                     $("#editkata").val(data['nama_kb']);
                     $("#desc").val(data['desc_kb']);
                     $.each(data['relations'], function(i,hipernim){
-                      hipernimItem = `
-                      <tr>
-                            <td>  `+hipernim['kedalaman']+`</td>
-                            <td>  `+hipernim['hipernim'].hipernim+`</br>
-                            ➨  `+hipernim['hipernim'].desc_hipernim+`
-                            </td>
-                            <td style="text-align: center;">
-                                <i class="fas fa-trash-alt mt-1 mb-1" style="color: #000;" ></i>
-                                <i class="fas fa-edit mt-1 mb-1" style="color: #000;" ></i>
-                            </td>
-                        </tr>
-                       
-                       `;
-                       $("#kbedittabel").append(hipernimItem);
+                        hipernimItem = `
+                        <tr>
+                                <td>  `+hipernim['kedalaman']+`</td>
+                                <td>  `+hipernim['hipernim'].hipernim+`</br>
+                                ➨  `+hipernim['hipernim'].desc_hipernim+`
+                                </td>
+                                <td style="text-align: center;">
+                                    <i class="fas fa-trash-alt mt-1 mb-1" style="color: #000;" ></i>
+                                    <i class="fas fa-edit mt-1 mb-1" style="color: #000;" ></i>
+                                </td>
+                            </tr>
+                        
+                        `;
+                        $("#kbedittabel").append(hipernimItem);
                     });
                 }
             )
-        });
+        }
+
         //radio button salah satu disable
         $('#exampleRadios1').on('change', function(){
             $('#tambahHipernim input[type=text]').prop('disabled',false);

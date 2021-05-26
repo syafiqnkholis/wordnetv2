@@ -22,3 +22,4 @@ Route::get('/noun', 'SearchController@getNoun')->name('getNoun');
 Route::post('/savekb', 'NounController@simpannoun')->name('simpannoun');
 Route::post('/tampilkb', 'NounController@tampilnoun')->name('tampilnoun');
 Route::get('/hapuskb/{id}', 'NounController@hapusnoun')->name('hapusnoun');
+Route::get('/hapuskb/{id}', 'NounController@hapusnoun')->name('hapusnoun');

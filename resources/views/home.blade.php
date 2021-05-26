@@ -22,7 +22,19 @@
 
     </head>
     <body class="bg" style="padding-bottom: 26px;">
-        //navbar
+        <nav class="row navbar" style="width:100%; background-color: #0F3057;">
+            <div class="col-md-10" style="justify-content:left;">
+            <a class="navbar-brand" href="/" style="font-family: times new romance; color:#939698">
+            <img src="https://ugm.ac.id/images/optimasi/ugm_header.png" width="25" height="25" alt="">
+            WordNet UGM
+            </a>
+            </div>
+            <div class="row col-md-2" style="justify-content:right;">
+                <button class="btn col-md-6" style="color: #fff;">Daftar</button>
+                <button class="btn col-md-6" style="color: #fff;">Masuk</button>
+            </div>
+        </nav>
+        <!-- navbar -->
         <div>
                 <!-- <div class="mt-1">
                     <button class="btn setting" id="btn-jarak">
@@ -32,7 +44,7 @@
                 </div><br> -->
         </div>
     <div class="row bg" style="margin:0">
-    //jarak kata
+    <!-- jarak kata -->
         <div class="col-md-3 mt-3">
                 <!-- <div class="mt-1">
                     <button class="btn setting" id="btn-jarak">
@@ -64,9 +76,7 @@
 
         <div class="col-md-6 mt-3">
             <div class="row">
-                <div class="judulhome">
-                    Wordnet UGM
-                </div>
+                <div style="color: #fff; font-size: 20px;">Pencarian hipernim</div>
                 <div class="col-md-12 mt-2" >
                     <div class="mt-4">
                     <input type="text" id="inputquery" class="form-control mr-1 input" name="searchnoun" placeholder="&#xF002; cari" >
@@ -74,42 +84,9 @@
                     
                 </div>
                 <div class="mt-2 ml-1" id="resultContainer">
-                    <!-- <h6>CPU</h6>
-                    <p>(n) CPU, UPP, Unit Pengolah Pusat, pengolah pusat, ( bidang komputer ) bagian komputer yang paling banyak melakukan pengolahan data.</p>
-                    <div class=" mb-2" >
-                    <tr>
-                        <td> Peranti elektronik</td></br>
-                        <td> ➨ Perangkat yang mengandung kendali konduksi elektron</td><br>
-                        <td> Peranti</td></br>
-                        <td> ➨ Suatu alat yang dibutuhkan untuk suatu usaha atau untuk melakukan layanan</td> 
-                        <td> Peranti elektronik</td></br>
-                        <td> ➨ Perangkat yang mengandung kendali konduksi elektron</td><br>
-                        <td> Peranti</td></br>
-                        <td> ➨ Suatu alat yang dibutuhkan untuk suatu usaha atau untuk melakukan layanan</td> 
-                        <td> Peranti elektronik</td></br>
-                        <td> ➨ Perangkat yang mengandung kendali konduksi elektron</td><br>
-                        <td> Peranti</td></br>
-                        <td> ➨ Suatu alat yang dibutuhkan untuk suatu usaha atau untuk melakukan layanan</td> 
-                        <td> Peranti elektronik</td></br>
-                        <td> ➨ Perangkat yang mengandung kendali konduksi elektron</td><br>
-                        <td> Peranti</td></br>
-                        <td> ➨ Suatu alat yang dibutuhkan untuk suatu usaha atau untuk melakukan layanan</td>               
-                    </tr> -->
                     </div>  
                 </div>
             </div> 
-            
-            
-        <!-- konten samping kanan =============================================== -->
-        <!-- <div class="col-md-3 wrapper">
-
-            <div class="mt-1">
-                <a href="/kbbaru" class="btn setting" style="float: left;color: #fff;">
-                <i class="fas fa-cog fa-sm mt-1 mr-1 mb-1" style="color: #fff;" ></i> Pengaturan 
-            </a>
-            </div>
-            </div>
-        </div> -->
     </div>
     
     
