@@ -175,23 +175,34 @@
 
 
     </head>
-    <body>
+    <body class="bg">
+    <div class="bg">
 
-        <nav class="navbar" style="width:100%; background-color: #0F3057; justify-content:left">
+    <nav class="row navbar" style="width:100%; background-color: #0F3057;">
+            <div class="col-md-6" style="justify-content:left;">
             <a class="navbar-brand" href="/" style="font-family: times new romance; color:#939698">
             <img src="https://ugm.ac.id/images/optimasi/ugm_header.png" width="25" height="25" alt="">
             WordNet UGM
             </a>
-        </nav>
+            </div>
+            <div class="row col-md-6" style="justify-content:right;">
+            <button class="btn col-md-2" style="color: #fff;"></button>
+                <button class="btn col-md-2" style="color: #fff;">Home</button>
+                <button class="btn col-md-2" style="color: #fff;">Pencarian</button>
+                <button class="btn col-md-2" style="color: #fff;">Jarak Kata</button>
+                <button class="btn col-md-2" style="color: #fff;">Daftar</button>
+                <button class="btn col-md-2" style="color: #fff;">Masuk</button>
+            </div>
+    </nav>
     
-    <div class="">
+    <div>
     @yield('content')
     </div>
 
         <div class="footer" >
             <p style="float: right;">&copy; 2021</p>
         </div>
-
+</div>
     </body>
     <script>
     </script>

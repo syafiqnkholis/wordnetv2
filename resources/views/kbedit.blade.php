@@ -22,14 +22,14 @@
         <!-- konten tengah  =============================================== --> 
 
         <div class="col-md-8 ">
-            <h4>KELOLA KATA BENDA</h4>
-            <div class="row">
+            <h4 style="color: #fff;" >KELOLA KATA BENDA</h4>
+            <div class="card flex-row">
                 <div class="col-md-4">
                     pilih kata
                     <input type="text" class="form-control mb-2 search" placeholder="&#xF002; cari">
                     <select id="listkata"></select>
                 </div>
-                <div class=" col-md-4" >
+                <div class="col-md-4" >
                     Edit kata
                     <input id="editkata" type="text" class="form-control mb-1" placeholder="masukkan kata" style="width: 100%;">  
                 </div>
@@ -40,7 +40,7 @@
             </div>   
 
             <!-- susunan hipernim ================================================ -->
-            <div class="row mt-3" >
+            <div class="card row mt-3" >
                 <div class="col-md-12">
                     Ubah susunan hipernim
                     <button type="button" class="btn col-md-6 ml-2 mb-2 mr-2" style="width: 40px;">
@@ -114,20 +114,6 @@
 
         <!-- konten samping kanan =============================================== -->
         <div class="col-md-3">
-            <div class="vl row mt-4">
-                <input type="text" class="form-control mb-2 search col-md-7 ml-2 mt-2" placeholder="&#xF002; cari">
-                <button class="btn btn-success col-md-4 mt-2 ml-1" style="height: 32px;">
-                    Preview
-                </button>
-                <div id="London" class="w3-container city">
-                <h2></h2>
-                
-                </div>
-
-                <div id="Paris" class="w3-container city" style="display:none">
-                <h2>Paris</h2>
-                <p>Paris is the capital of France.</p> 
-                </div>
             </div>
             <!-- <div class=" mt-3">
             Kelola hipernim

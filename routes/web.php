@@ -16,8 +16,16 @@ Route::get('/', function () {
     return view('halamanutama');
 });
 
-Route::get('/homehip', function () {
-    return view('home');
+Route::get('/halamanhipernim', function () {
+    return view('halamanhipernim');
+});
+
+Route::get('/halamanhipernimkonten', function () {
+    return view('halamanhipernimkonten');
+});
+
+Route::get('/halamanjarakkata', function () {
+    return view('halamanjarakkata');
 });
 
 Route::get('/kbbaru', function () {
