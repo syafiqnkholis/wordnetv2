@@ -23,47 +23,31 @@
 
         <div class="col-md-8 ">
             <h4 style="color: #fff;" >KELOLA KATA BENDA</h4>
-            <div class="card flex-row">
-                <div class="col-md-4">
+            <div class="row flex-row">
+                <!-- <div class="col-md-4">
                     pilih kata
                     <input type="text" class="form-control mb-2 search" placeholder="&#xF002; cari">
                     <select id="listkata"></select>
-                </div>
+                </div> -->
                 <div class="col-md-4" >
-                    Edit kata
+                <h6 style="color: #fff;">Edit Kata</h6>
                     <input id="editkata" type="text" class="form-control mb-1" placeholder="masukkan kata" style="width: 100%;">  
                 </div>
-                <div class="col-md-4">
-                    Edit deskripsi
+                <div class="col-md-8">
+                <h6 style="color: #fff;">Edit Deskripsi</h6>
                     <textarea id="desc" class="form-control" rows="1" ></textarea>
                 </div>
             </div>   
 
             <!-- susunan hipernim ================================================ -->
-            <div class="card row mt-3" >
+            <div class="card mt-3" >
                 <div class="col-md-12">
-                    Ubah susunan hipernim
-                    <button type="button" class="btn col-md-6 ml-2 mb-2 mr-2" style="width: 40px;">
-                    <i class="fas fa-plus-square mt-1 mb-1" style="color: #000;" ></i>
+                    Pengaturan hipernim
+                    <button type="button" class="btn btn-success col-md-6 ml-2 mb-2 mr-2" id="buatbaru" style="width: 100px;">
+                    Buat Baru
                     </button>
                     <!-- susunan hipernim / row =================================== -->
-                    <table id="kbedittabel" class="table-hipernim">
-                        <!-- <tr>
-                            <th>index</th>
-                            <th>Hipernim</th>
-                            <th>pengaturan</th>
-                        </tr> -->
-                        <tr>
-                            <td> 1</td>
-                            <td> Peranti elektronik</br>
-                            ➨ Perangkat yang mengandung kendali konduksi elektron
-                            </td>
-                            <td style="text-align: center;">
-                                <i class="fas fa-trash-alt mt-1 mb-1" style="color: #000;" ></i>
-                                <i class="fas fa-edit mt-1 mb-1" style="color: #000;" ></i>
-                            </td>
-                        </tr>
-                        
+                    <table id="kbedittabel" class="table-hipernim">                        
                     </table>
                     <table class="table-hipernim">
                     <tr>
@@ -86,21 +70,9 @@
                                     </button>
                                 
                             </div>
-                        </tr>
+                        </td>
+                    </tr>
                     </table>
-                    <!-- <div>
-                        
-                        <div class="row" >
-                        <div class="col-md-12">
-                            <div id="listContainer" class="col-md-12 mt-1" >
-                            </div>
-                                <div id="containerHipernim">
-                                </div>
-                            </div>
-                            
-                        </div>
-
-                    </div> -->
                 </div>
                 
             </div>
@@ -178,8 +150,9 @@
                                 ➨  `+hipernim['hipernim'].desc_hipernim+`
                                 </td>
                                 <td style="text-align: center;">
+                                <button class="btn">
                                     <i class="fas fa-trash-alt mt-1 mb-1" style="color: #000;" ></i>
-                                    <i class="fas fa-edit mt-1 mb-1" style="color: #000;" ></i>
+                                </button>
                                 </td>
                             </tr>
                         
@@ -223,5 +196,9 @@
         }
         document.getElementById(cityName).style.display = "block";  
         }
+
+        $('#buatbaru').click(function(){
+            $(this).append('<td></td>');
+        });
     </script>
 @endsection

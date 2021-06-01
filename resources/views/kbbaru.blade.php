@@ -23,25 +23,25 @@
         <!-- konten tengah  =============================================== --> 
         
         <div class="col-md-8" >
-        <h4>KATA BENDA BARU</h4>
-            <div class="row mt-3 mb-1 ml-1">
+        <h4 style="color: #fff;">KATA BENDA BARU</h4>
+            <div class="row mt-4">
                 <div class=" col-md-4" >
-                    kata baru
+                    <h6 style="color: #fff;">kata baru</h6>
                     <input id="katabaru" type="text" class="form-control mb-1" placeholder="masukkan kata" style="width: 100%;">  
                 </div>
-                <div class="col-md-4">
-                    deskripsi
+                <div class="col-md-8">
+                <h6 style="color: #fff;">Deskripsi</h6>
                     <textarea id="descbaru" class="form-control" rows="1" ></textarea>
                 </div>
             </div>    
 
             <!-- susunan hipernim ================================================ -->
-            <div class="row  ml-1" >
+            <div class="row" >
                 <div class="col-md-12">
-                    masukkan hipernim
+                    <h6 style="color: #fff;"> masukkan hipernim <h6>
                     <div id="listContainer" class="col-md-12 mt-2" >
                     </div>
-                    <div class="mb-3">
+                    <div class="card mb-3">
                         <div class="row"> 
                             <div class="col-md-4">
                                 <div class="form-check" id="tambahh">
@@ -97,8 +97,8 @@
             $currentKedalaman++;
             $('#listContainer').append(`
             <div id="hipernim`+$currentKedalaman+`">
-                <p>hipernim `+$currentKedalaman+`</p>
-                <div class=" mb-2 row" style="padding-left: 5px;">    
+                <p style="color: #fff;">hipernim `+$currentKedalaman+`</p>
+                <div class="card flex-row mb-2 row" style="padding-left: 5px;">    
                     <div class="col-md-10">`+$hipernim+`</br> ➨ `+$deskripsi+`</div>
                     <div class="col-md-2">
                         <button type="button" data-id="`+$currentKedalaman+`" class="btn btn-danger btn-delete mt-2 mb-2" style="width: 80px;">hapus</button>

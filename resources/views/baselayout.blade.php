@@ -175,10 +175,10 @@
 
 
     </head>
-    <body class="bg">
+<body class="bg">
     <div class="bg">
 
-    <nav class="row navbar" style="width:100%; background-color: #0F3057;">
+    <!-- <nav class="row navbar m-0" style="width:100%; background-color: #0F3057;">
             <div class="col-md-6" style="justify-content:left;">
             <a class="navbar-brand" href="/" style="font-family: times new romance; color:#939698">
             <img src="https://ugm.ac.id/images/optimasi/ugm_header.png" width="25" height="25" alt="">
@@ -191,19 +191,72 @@
                 <button class="btn col-md-2" style="color: #fff;">Pencarian</button>
                 <button class="btn col-md-2" style="color: #fff;">Jarak Kata</button>
                 <button class="btn col-md-2" style="color: #fff;">Daftar</button>
-                <button class="btn col-md-2" style="color: #fff;">Masuk</button>
+                <div class="btn col-md-">
+                                    <a style="color: #fff;" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Keluar') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                    </div>
+                </div>
+    </nav> -->
+
+    <nav class="row navbar m-0" style="width:100%; background-color: #0F3057;">
+            <div class="col-md-6" style="justify-content:left;">
+            <a class="navbar-brand" href="/" style="font-family: times new romance; color:#939698">
+            <img src="https://ugm.ac.id/images/optimasi/ugm_header.png" width="25" height="25" alt="">
+            WordNet UGM
+            </a>
             </div>
+                    <!-- Right Side Of Navbar -->
+                    <ul class="navbar-nav ml-auto">
+                        <!-- Authentication Links -->
+                        @guest
+                        <div class="row">
+                            <li class="nav-item col-md-6">
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Masuk') }}</a>
+                            </li>
+                            @if (Route::has('register'))
+                            <li class="nav-item col-md-6">
+                                <a class="nav-link" href="{{ route('register') }}">{{ __('Daftar') }}</a>
+                            </li>
+                        </div>
+                            @endif
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+                    </ul>
     </nav>
     
     <div>
     @yield('content')
     </div>
 
-        <div class="footer" >
-            <p style="float: right;">&copy; 2021</p>
-        </div>
-</div>
-    </body>
+        <footer>
+            <div class="footer text-left py-3">
+            <h7 class="ml-4" style="color: #fff;">© 2020 UNIVERSITAS GADJAH MADA</h7>
+            </div>
+        </footer>
+    </div>
+</body>
     <script>
     </script>
 </html>
