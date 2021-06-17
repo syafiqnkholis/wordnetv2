@@ -2,6 +2,46 @@
 @section('title', '- Edit Kata Benda')
 @section('editStatus', 'active')
 @section('content')
+
+        <!-- modal sweet alert -->
+        <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        ...
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn dbtn-efault" data-dismiss="modal">Cancel</button>
+                        <button class="btn btn-danger" id="btn-ok">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- modal hipernim baru -->
+        <div class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Modal body text goes here.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+            </div>
+        </div>
+        </div>
+
         <div class="row kblayout">
         <!-- <div class="col-md-3">
             <div class="mt-3 ml-5 kolomkata">
@@ -49,7 +89,7 @@
                     <!-- susunan hipernim / row =================================== -->
                     <table id="kbedittabel" class="table-hipernim">                        
                     </table>
-                    <table class="table-hipernim">
+                    <!-- <table class="table-hipernim">
                     <tr>
                         <td colspan="3">
                             <div class="row">
@@ -72,13 +112,13 @@
                             </div>
                         </td>
                     </tr>
-                    </table>
+                    </table> -->
                 </div>
                 
             </div>
             <!-- susunan hipernim ================================================ -->
-            <div style="float:right;">
-                <button type="button" class="btn btn-danger mt-2 col-md-6" style="width: 80px;">batal</button>
+            <div style="float:right; margin-bottom:60px">
+                <button  onclick="window.location.href='/kbtable'" type="button" class="btn btn-danger mt-2 col-md-6" style="width: 80px;">batal</button>
                 <button type="button" class="btn btn-success mt-2 col-md-6" style="width: 80px;">simpan</button>
             </div>
         </div>
@@ -150,8 +190,8 @@
                                 ➨  `+hipernim['hipernim'].desc_hipernim+`
                                 </td>
                                 <td style="text-align: center;">
-                                <button class="btn">
-                                    <i class="fas fa-trash-alt mt-1 mb-1" style="color: #000;" ></i>
+                                <button class="btn" >
+                                    <i class="fas fa-trash-alt mt-1 mb-1" style="color: #000;" data-target='#confirm-delete'></i>
                                 </button>
                                 </td>
                             </tr>
@@ -200,5 +240,38 @@
         $('#buatbaru').click(function(){
             $(this).append('<td></td>');
         });
+
+        //modal delete hipernim
+        $('#confirm-delete').on('click',function(){
+            console.log('teeeeeeeeeees');
+        });
+
+        $('#confirm-delete').on('show.bs.modal', function(e) {
+        console.log("show1",e);
+        $(this).find('#btn-ok').attr('href', $(e.relatedTarget).data('href'));
+    });
+
+    $('#confirm-delete').on('show.bs.modal', function(e) {
+        $(this).find('#btn-ok').on('click', function() {
+            $.get($(e.relatedTarget).data('href'),
+                function(data) {
+                    $('#myTable').DataTable().ajax.reload()
+                    $('#confirm-delete').modal('hide');
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Berhasil dihapus!',
+                        icon: 'success',
+                        confirmButtonText: 'Ok'
+                    })
+                })
+        })
+    });
+    
+    $('#confirm-delete').on('hide.bs.modal', function(e) {
+        $(this).find('#btn-ok').off('click');
+    });
+
+    //modal hipernim baru
+    
     </script>
 @endsection

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,44 +13,56 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::middleware(['auth','admin'])->group(function () {
-    Route::get('/kbtable', function () {
-        return view('kbtable');
+    Route::middleware(['auth','admin'])->group(function () {
+        Route::get('/kbtable', function () {
+            return view('kbtable');
+        })->name('kbtable');
+        Route::get('/kbbaru', function () {
+            return view('kbbaru');
+        });
+        Route::get('/kbedit', function () {
+            return view('kbedit');
+        });
+        Route::get('/kbedittes/{id}','NounController@edit')->name('kbedit');
+        Route::post('/addHipernim','NounController@addHipernim');
+        Route::get('/deleteHipernim/{id}','NounController@deleteHipernim');
+
+        Route::get('/kktable', function () {
+            return view('kktable');
+        })->name('kktable');
+        Route::get('/kkbaru', function () {
+            return view('kkbaru');
+        });
+        Route::get('/kkedit', function () {
+            return view('kkedit');
+        });
+
     });
 
-    Route::get('/kbbaru', function () {
-        return view('kbbaru');
+    Route::middleware(['auth','user'])->group(function () { 
+    Route::get('/halamanjarakkata', function () {
+        return view('halamanjarakkata');
+        });
+    Route::post('/halamanjarakkata', 'NounController@jarak');
     });
 
-    Route::get('/kbedit', function () {
-        return view('kbedit');
-    });
+    Route::get('/halamanhipernimkonten/{id}', 'NounController@display');
 
-});
-
-Route::middleware(['auth','user'])->group(function () {
     Route::get('/halamanhipernimkonten', function () {
         return view('halamanhipernimkonten');
     });
+    
 
-    Route::get('/halamanjarakkata', function () {
-        return view('halamanjarakkata');
+    Route::get('/', function () {
+    return view('halamanutama');
     });
 
-});
-
-Route::get('/', function () {
-    return view('halamanutama');
-});
-
-Route::get('/halamanhipernim', function () {
+    Route::get('/halamanhipernim', function () {
     return view('halamanhipernim');
-});
+    });
 
+    Route::get('/hipernim','SearchController@searchhipernim');
+    Route::get('admin/api/product','InvoiceController@getAutocompleteData'); 
 
-
-Route::get('/hipernim','SearchController@searchhipernim');
-Route::get('admin/api/product','InvoiceController@getAutocompleteData'); 
-
-Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+    Auth::routes();
+    // Route::get('/', 'HomeController@index')->name('home');

@@ -23,7 +23,7 @@
         <!-- konten tengah  =============================================== --> 
         
         <div class="col-md-8" >
-        <h4 style="color: #fff;">KATA BENDA BARU</h4>
+            <h4 style="color: #fff;" >KATA BENDA</h4>
             <div class="row mt-4">
                 <div class=" col-md-4" >
                     <h6 style="color: #fff;">kata baru</h6>
@@ -49,7 +49,7 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <textarea class="form-control" id="deskripsi" rows="1"></textarea>
+                                <textarea class="form-control" id="deskripsi" rows="1" placeholder="tambah hipernim"></textarea>
                             </div>
                             <div class="col-md-2">
                                 <div col-md-6>
@@ -62,9 +62,9 @@
                 
             </div>
             <!-- susunan hipernim ================================================ -->
-            <div class="mb-6" style="float:right;">
-                <button type="button" class="btn btn-danger mt-2 col-md-6" style="width: 80px;">batal</button>
-                <button type="button" class="btn btn-success mt-2 col-md-6" id="simpan" style="width: 80px;">simpan</button>
+            <div class="mb-6" style="float:right; margin-bottom:60px    ">
+                <button onclick="window.location.href='/kbtable'" type="button" class="btn btn-danger mt-2 col-md-6" style="width: 80px;">batal</button>
+                <button onclick="window.location.href='/kbtable'" type="button" class="btn btn-success mt-2 col-md-6" id="simpan" style="width: 80px;">simpan</button>
             </div>
             
     </div>
@@ -155,6 +155,9 @@
                 $.get('/hipernim', 
                 { "searchhipernim": request.term },
                 function(data) {
+                    $.each(data, function(i,kb){
+                        $("#listkata").append('<option value='+kb['id_kb']+'>'+kb['nama_kb']+'</option>');
+                    });
                     var array = $.map(data,function(row){
                             return {
                                 value:row.hipernim,
@@ -189,8 +192,6 @@
                 $('#deskripsi').val(ui.item.desc_hipernim)
                 simpanId = ui.item.id
                 console.log(ui.item.id)
-                // $('#buy_rate').val(ui.item.buy_rate)
-                // $('#sale_price').val(ui.item.sale_price)
             }
         })
     });
@@ -234,7 +235,8 @@
         //         'application/json'
         //     )   
     });
-    
+
+    //sweet alert berhasil disimpan    
     </script>
 @endsection
 
