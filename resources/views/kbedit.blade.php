@@ -1,49 +1,11 @@
 @extends('baselayout')
-@section('title', '- Edit Kata Benda')
-@section('editStatus', 'active')
+@section('title', '- Tambah Kata Benda')
+@section('baruStatus', 'active')
 @section('content')
 
-        <!-- modal sweet alert -->
-        <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        ...
-                    </div>
-                    <div class="modal-body">
-                        ...
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn dbtn-efault" data-dismiss="modal">Cancel</button>
-                        <button class="btn btn-danger" id="btn-ok">Delete</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- modal hipernim baru -->
-        <div class="modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>Modal body text goes here.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Save changes</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-            </div>
-        </div>
-        </div>
-
-        <div class="row kblayout">
-        <!-- <div class="col-md-3">
+    <div class="row kblayout">
+    
+        <!-- <div class="col-md-3 wrapper">
             <div class="mt-3 ml-5 kolomkata">
                             <div class="form-group">
                                 pilih kata
@@ -58,162 +20,165 @@
                             </div>
                     </div>
         </div> -->
-
         <!-- konten tengah  =============================================== --> 
-
-        <div class="col-md-8 ">
-            <h4 style="color: #fff;" >KELOLA KATA BENDA</h4>
-            <div class="row flex-row">
-                <!-- <div class="col-md-4">
-                    pilih kata
-                    <input type="text" class="form-control mb-2 search" placeholder="&#xF002; cari">
-                    <select id="listkata"></select>
-                </div> -->
-                <div class="col-md-4" >
-                <h6 style="color: #fff;">Edit Kata</h6>
-                    <input id="editkata" type="text" class="form-control mb-1" placeholder="masukkan kata" style="width: 100%;">  
+        
+        <div class="col-md-8" >
+            <form method="POST" action="{{ action('NounController@editFormProcess') }}">
+            @csrf
+            <h4 style="color: #fff;" >KATA BENDA</h4>
+            <div class="row mt-4">
+                <div class=" col-md-4" >
+                    <h6 style="color: #fff;">kata baru</h6>
+                    <input id="katabaru" name="katabaru" type="text" class="form-control mb-1" value="{{$noun->nama_kb}}" placeholder="masukkan kata" style="width: 100%;">  
+                    @if($message = Session::get('error3'))
+                        <p style="margin-left:6%; font-size:12px; color:#FF1C1C; font-weight: bold"> {{ $message }} </p>       
+                    @endif
                 </div>
-                <div class="col-md-8">
-                <h6 style="color: #fff;">Edit Deskripsi</h6>
-                    <textarea id="desc" class="form-control" rows="1" ></textarea>
+                <div class="col-md-4">
+                <h6 style="color: #fff;">Deskripsi</h6>
+                    <textarea id="descbaru" name="descbaru" class="form-control" rows="1" >{{$noun->desc_kb}}</textarea>
+                    @if($message = Session::get('error4'))
+                        <p style="margin-left:6%; font-size:12px; color:#FF1C1C; font-weight: bold"> {{ $message }} </p>       
+                    @endif
                 </div>
-            </div>   
+                <div class="col-md-4">
+                <h6 style="color: #fff;">Kategori</h6>
+                <select name="id_kategori" class="form-control ">
+                @foreach($kategori as $kategori)
+                    <option value="{{$kategori->id_kategori}}" selected="{{$kategori->id_kategori == $noun->id_kategori}}">{{$kategori -> nama_kategori}}</option>
+                @endforeach
+                </select>
+                    @if($message = Session::get('error4'))
+                        <p style="margin-left:6%; font-size:12px; color:#FF1C1C; font-weight: bold"> {{ $message }} </p>       
+                    @endif
+                </div>
+            </div>    
 
             <!-- susunan hipernim ================================================ -->
-            <div class="card mt-3" >
+            <div class="row" >
                 <div class="col-md-12">
-                    Pengaturan hipernim
-                    <button type="button" class="btn btn-success col-md-6 ml-2 mb-2 mr-2" id="buatbaru" style="width: 100px;">
-                    Buat Baru
-                    </button>
-                    <!-- susunan hipernim / row =================================== -->
-                    <table id="kbedittabel" class="table-hipernim">                        
-                    </table>
-                    <!-- <table class="table-hipernim">
-                    <tr>
-                        <td colspan="3">
-                            <div class="row">
-                            <div class=" col-md-3" >
-                                Edit kata
-                                <input id="editkata" type="text" class="form-control mb-1" placeholder="masukkan kata" style="width: 100%;">  
+                    <div id="listContainer" class="col-md-12 mt-2" >
+                    @foreach($noun->relations as $hipernim)
+                    <div id="hipernim{{$hipernim->kedalaman}}">
+                        <p style="color: #fff;">hipernim {{$hipernim->kedalaman}}</p>
+                        <div class="card flex-row mb-2 row" style="padding-left: 5px;">    
+                            <div class="col-md-10">{{$hipernim->hipernim->hipernim}}</br> ➨ {{$hipernim->hipernim->desc_hipernim}}</div>
+                            <div class="col-md-2">
+                                <a href="/deleteHipernim/{{$hipernim->id}}" class="btn btn-danger btn-delete mt-2 mb-2" style="width: 80px;">hapus</a>
+                                <!-- <button type="button" data-id="{{$hipernim->id}}" class="btn btn-danger btn-delete mt-2 mb-2" style="width: 80px;">hapus</button> -->
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                    </div>
+                    <h6 style="color: #fff;"> masukkan hipernim <h6>
+                    <!-- <form method="POST" action="{{ action('NounController@addHipernim') }}"> -->
+                    <!-- @csrf -->
+                    <input value="{{$id}}" name="id_kb" hidden/>
+                    <input name="id_hipernim" id="id_hipernim" hidden/>
+                    <div class="card mb-3">
+                        <div class="row"> 
+                            <div class="col-md-4">
+                                <div class="form-check" id="tambahh">
+                                    <input type="text" class="form-control" id="hipernim" name="hipernim" value="{{ Session::get('hipernim') }}" placeholder="tambah hipernim"/>
+                                    @if($message = Session::get('error1'))
+                                        <p style="margin-left:6%; font-size:12px; color:#FF1C1C; font-weight: bold"> {{ $message }} </p>       
+                                    @endif
+                                </div>
                             </div>
                             <div class="col-md-6">
-                                Edit deskripsi
-                                <textarea id="desc" class="form-control" rows="1" ></textarea>
+                                <textarea class="form-control" id="desc_hipernim" name="desc_hipernim" rows="1" placeholder="tambah hipernim">{{ Session::get('desc_hipernim') }}</textarea>
+                                @if($message = Session::get('error2'))
+                                    <p style="margin-left:6%; font-size:12px; color:#FF1C1C; font-weight: bold"> {{ $message }} </p>       
+                                @endif
                             </div>
-                            <div class="col-md-3 mt-3 row">
-                                    <button class="btn btn-danger col-md-6 ">
-                                    hapus
-                                    </button>
-                                    <button class="btn btn-success col-md-6">
-                                    simpan
-                                    </button>
-                                
+                            <div class="col-md-2">
+                                <div col-md-6>
+                                <button type="submit" name="action" value="hipernim" onclick="window.location.href='/kbedittes/{id}'" class="btn btn-success " style="width: 80px;">ok</button>
+                                <!-- <button type="button" id="btnOk" class="btn btn-success " style="width: 80px;">ok</button> -->
+                                </div>
                             </div>
-                        </td>
-                    </tr>
-                    </table> -->
+                        </div>
+                    </div>
+                    <!-- </form> -->
                 </div>
                 
             </div>
             <!-- susunan hipernim ================================================ -->
-            <div style="float:right; margin-bottom:60px">
-                <button  onclick="window.location.href='/kbtable'" type="button" class="btn btn-danger mt-2 col-md-6" style="width: 80px;">batal</button>
-                <button type="button" class="btn btn-success mt-2 col-md-6" style="width: 80px;">simpan</button>
+            <div class="mb-6" style="float:right; margin-bottom:60px">
+                <button onclick="window.location.href='/kbtable'" type="button" class="btn btn-danger mt-2 col-md-6" style="width: 80px;">batal</button>
+                <button type="submit" name="action" value="noun" class="btn btn-success mt-2 col-md-6" style="width: 80px;">simpan</button>
             </div>
-        </div>
-
-
-        <!-- konten samping kanan =============================================== -->
-        <div class="col-md-3">
-            </div>
-            <!-- <div class=" mt-3">
-            Kelola hipernim
-                <div class="isihip" style="width: 95%;" >
-                    <div class="ml-2" id="tambahHipernim">
-                        <input type="radio" name="exampleRadios" id="exampleRadios1" value="option1"> 
-                        tambah hipernim</br>
-                            masukkan hipernim
-                            <input type="text" class="form-control mb-1" style="width: 95%;" disabled>
-                            masukkan deskripsi
-                            <input type="text" class="form-control mb-1" style="width: 95%;" disabled>
-                    </div>
-                    <br>
-                    <div class="ml-2" id="pilihHipernim">
-                        <input type="radio" name="exampleRadios" id="exampleRadios2" value="option1" checked>
-                        pilih hipernim</br>
-                            masukkan hipernim
-                            <input type="text" class="form-control mb-1" style="width: 95%;" >
-                            masukkan deskripsi
-                            <input type="text" class="form-control mb-1" style="width: 95%;" >
-                    </div></br>
-                    <div class="ml-2">
-                            pilih kondisi
-                            <input type="text" class="form-control mb-1" style="width: 95%;">
-                    </div>
-                    <div style="float:right;">
-                <button type="button" class="btn btn-danger mt-2 col-md-6" style="width: 80px;">batal</button>
-                <button type="button" class="btn btn-success mt-2 col-md-6" style="width: 80px;">simpan</button>
-            </div>
-                </div>
-            </div> -->
-        </div>
-
+        </form>
+        </div>   
     </div>
     <script>
-        $(document).ready( function () {
-            const urlParams = new URLSearchParams(window.location.search);
-            const idNoun  = urlParams.get('id');
-            fillValues(idNoun)
-        } );
+        var hipernims=[];
+        var fd= new FormData();
+        var simpanId =0;
 
-        //list kata muncul di kolom edit
         $('#listkata').on('change', function(){
-            var idNoun = this.value;
-            fillValues(idNoun);
+            $('#editkata').val(this.value);
+        });
+        $('#tambahh').on('change', function(){
+            $('#tambahh input[type=text]').prop('disabled',false);
+            $('#pilihh input[type=text]').prop('disabled',true);
+            $('#deskripsi').prop('disabled',false);
+        });
+        $('#pilihh').on('change', function(){
+            $('#tambahh input[type=text]').prop('disabled',true);
+            $('#pilihh input[type=text]').prop('disabled',false);
+            $('#deskripsi').prop('disabled',true);
         });
 
-        function fillValues(idNoun){
+    // ketika klik ok
+        $currentKedalaman = 0;
+        
+        $('#btnOk').click(function(){
+            $hipernim = $('#hipernim').val();
+            $deskripsi = $('#deskripsi').val();
+
+            $currentKedalaman++;
+            $('#listContainer').append(`
+            <div id="hipernim`+$currentKedalaman+`">
+                <p style="color: #fff;">hipernim `+$currentKedalaman+`</p>
+                <div class="card flex-row mb-2 row" style="padding-left: 5px;">    
+                    <div class="col-md-10">`+$hipernim+`</br> ➨ `+$deskripsi+`</div>
+                    <div class="col-md-2">
+                        <button type="button" data-id="`+$currentKedalaman+`" class="btn btn-danger btn-delete mt-2 mb-2" style="width: 80px;">hapus</button>
+                    </div>
+                </div>
+            </div>
+            `);
+            hipernims.push(new Classhipernim(
+                simpanId, $hipernim, $deskripsi,
+            ));
+            fd.append("hipernims[]", 
+                simpanId+"___"+$hipernim+"___"+$deskripsi
+            );
+            simpanId=0;
+            console.log($hipernim);
             
-            $.get('/api/noun', 
-                { "id_kb": idNoun },
-                function(data) {
-                    $("#kbedittabel > tr").remove()
-                    var hipernimItem = ""
-                    $("#editkata").val(data['nama_kb']);
-                    $("#desc").val(data['desc_kb']);
-                    $.each(data['relations'], function(i,hipernim){
-                        hipernimItem = `
-                        <tr>
-                                <td>  `+hipernim['kedalaman']+`</td>
-                                <td>  `+hipernim['hipernim'].hipernim+`</br>
-                                ➨  `+hipernim['hipernim'].desc_hipernim+`
-                                </td>
-                                <td style="text-align: center;">
-                                <button class="btn" >
-                                    <i class="fas fa-trash-alt mt-1 mb-1" style="color: #000;" data-target='#confirm-delete'></i>
-                                </button>
-                                </td>
-                            </tr>
-                        
-                        `;
-                        $("#kbedittabel").append(hipernimItem);
-                    });
-                }
-            )
-        }
-
-        //radio button salah satu disable
-        $('#exampleRadios1').on('change', function(){
-            $('#tambahHipernim input[type=text]').prop('disabled',false);
-            $('#pilihHipernim input[type=text]').prop('disabled',true);
+            $('#hipernim').val("")
+            $('#deskripsi').val("")
         });
-        $('#exampleRadios2').on('change', function(){
-            $('#tambahHipernim input[type=text]').prop('disabled',true);
-            $('#pilihHipernim input[type=text]').prop('disabled',false);
+        
+        // ketika klik remove
+        $(document).on('click', '.btn-delete', function(){
+            $id =  $(this).data('id');
+            $('#hipernim'+$id).remove();
+            for (let $i = $id+1; $i <= $currentKedalaman; $i++) {
+                $current = $i-1;
+                console.log($i);
+                $('#hipernim'+$i).attr('id', 'hipernim'+$current);    
+                $('#hipernim'+$current+' button').attr("data-id", $current);     
+                $('#hipernim'+$current+' p').text('Hipernim '+$current);           
+            }
+            hipernims.splice($id-1,1);
+            $currentKedalaman--;
         });
-
-        //search kata
+    // });
+    //search kata
         $('.search').on('input', function(){
             $.get('/api/pencarian/noun', 
                 { "searchnoun": $(this).val() },
@@ -226,52 +191,98 @@
                 }
             )
         });
-        
-        //konten sideright
-        function openCity(cityName) {
-        var i;
-        var x = document.getElementsByClassName("city");
-        for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";  
-        }
-        document.getElementById(cityName).style.display = "block";  
-        }
-
-        $('#buatbaru').click(function(){
-            $(this).append('<td></td>');
-        });
-
-        //modal delete hipernim
-        $('#confirm-delete').on('click',function(){
-            console.log('teeeeeeeeeees');
-        });
-
-        $('#confirm-delete').on('show.bs.modal', function(e) {
-        console.log("show1",e);
-        $(this).find('#btn-ok').attr('href', $(e.relatedTarget).data('href'));
-    });
-
-    $('#confirm-delete').on('show.bs.modal', function(e) {
-        $(this).find('#btn-ok').on('click', function() {
-            $.get($(e.relatedTarget).data('href'),
+    
+    // search hipernim
+    $(function () {
+        $('#hipernim').autocomplete({
+            source:function(request,response){
+                $.get('/hipernim', 
+                { "searchhipernim": request.term },
                 function(data) {
-                    $('#myTable').DataTable().ajax.reload()
-                    $('#confirm-delete').modal('hide');
-                    Swal.fire({
-                        title: 'Success!',
-                        text: 'Berhasil dihapus!',
-                        icon: 'success',
-                        confirmButtonText: 'Ok'
-                    })
-                })
+                    $.each(data, function(i,kb){
+                        $("#listkata").append('<option value='+kb['id_kb']+'>'+kb['nama_kb']+'</option>');
+                    });
+                    var array = $.map(data,function(row){
+                            return {
+                                value:row.hipernim,
+                                id:row.id_hipernim,
+                                label:row.hipernim,
+                                hipernim:row.hipernim,
+                                desc_hipernim:row.desc_hipernim
+                            }
+                        })
+
+                        response($.ui.autocomplete.filter(array,request.term));
+                }
+            )
+                // $.getJSON('/hipernim?'+request.term,function(data){
+                //         var array = $.map(data,function(row){
+                //             return {
+                //                 value:row.id,
+                //                 label:row.name,
+                //                 name:row.name,
+                //                 buy_rate:row.buy_rate,
+                //                 sale_price:row.sale_price
+                //             }
+                //         })
+
+                //         response($.ui.autocomplete.filter(array,request.term));
+                // })
+            },
+            minLength:1,
+            delay:500,
+            select:function(event,ui){
+                $('#hipernim').val(ui.item.hipernim)
+                $('#desc_hipernim').val(ui.item.desc_hipernim)
+                $('#id_hipernim').val(ui.item.id)
+                simpanId = ui.item.id
+                console.log(ui.item.id)
+            }
         })
     });
-    
-    $('#confirm-delete').on('hide.bs.modal', function(e) {
-        $(this).find('#btn-ok').off('click');
+
+    class Classhipernim{
+        constructor(id,hipernim,desc_hipernim){
+            this.id = id;
+            this.hipernim = hipernim;
+            this.desc_hipernim = desc_hipernim;
+        }
+    }
+
+    // simpan
+    $('#simpan').click(function(){
+            console.log("tes2");
+            fd.append('nama',$(katabaru).val());
+            fd.append('desc',$(descbaru).val());
+            // fd.append('hipernim[]',hipernims);
+
+            $.ajax({
+                headers: {'X-CSRF-TOKEN': $('meta[name-csrf-token]').attr('content') },
+                url: '/api/savekb',
+                method: "post",
+                processData: false,
+                contentType: false,
+                data: fd,
+                success: function(data) { 
+
+                }
+        })
+
+        // $.post('/api/savekb', 
+        //         fd,
+        //         function(data) {
+        //             console.log("tes");
+        //             $("#listkata").html("");
+        //             $.each(data, function(i,kb){
+        //                 $("#listkata").append('<option value='+kb['id_kb']+'>'+kb['nama_kb']+'</option>');
+        //             });
+        //         },
+        //         'application/json'
+        //     )   
     });
 
-    //modal hipernim baru
-    
+    //sweet alert berhasil disimpan    
     </script>
 @endsection
+
+@section("footer")

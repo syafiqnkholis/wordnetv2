@@ -21,13 +21,15 @@ use Illuminate\Support\Facades\Auth;
         Route::get('/kbbaru', function () {
             return view('kbbaru');
         })->name('kbbaru');
-        Route::get('/kbedit', function () {
-            return view('kbedit');
-        });
-        Route::get('/kbedittes/{id}','NounController@edit')->name('kbedit');
+        // Route::get('/kbedit', function () {
+        //     return view('kbedit');
+        // });
+        Route::get('/kbedit/{id}','NounController@edit')->name('kbedit');
         Route::post('/addHipernim','NounController@addHipernim');
         Route::get('/deleteHipernim/{id}','NounController@deleteHipernim');
         Route::post('/editFormProcess','NounController@editFormProcess');
+        
+        //route untuk kata kerja
 
         Route::get('/kktable', function () {
             return view('kktable');
@@ -38,9 +40,19 @@ use Illuminate\Support\Facades\Auth;
         Route::get('/kkedit', function () {
             return view('kkedit');
         });
-        Route::get('/kategoritable', function () {
-            return view('kategoritable');
-        });
+
+        Route::get('/kbedittes/{id}','NounController@edit')->name('kbedit');
+        Route::post('/addHipernim','NounController@addHipernim');
+        Route::get('/deleteHipernim/{id}','NounController@deleteHipernim');
+        Route::post('/editFormProcess','NounController@editFormProcess');
+
+        // Route::get('/kategoritable', function () {
+        //     return view('kategoritable');
+        // })->name('kategori');
+
+        //route untuk kategori
+        Route::post('/createKategori','KategoriController@createKategori');
+        Route::get('/kategoritable','KategoriController@showKategori')->name('kategori');
 
     });
 
