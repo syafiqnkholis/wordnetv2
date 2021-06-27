@@ -14,18 +14,20 @@ use Illuminate\Support\Facades\Auth;
 |
 */
     Route::middleware(['auth','admin'])->group(function () {
+        
         Route::get('/kbtable', function () {
             return view('kbtable');
         })->name('kbtable');
         Route::get('/kbbaru', function () {
             return view('kbbaru');
-        });
+        })->name('kbbaru');
         Route::get('/kbedit', function () {
             return view('kbedit');
         });
         Route::get('/kbedittes/{id}','NounController@edit')->name('kbedit');
         Route::post('/addHipernim','NounController@addHipernim');
         Route::get('/deleteHipernim/{id}','NounController@deleteHipernim');
+        Route::post('/editFormProcess','NounController@editFormProcess');
 
         Route::get('/kktable', function () {
             return view('kktable');
@@ -35,6 +37,9 @@ use Illuminate\Support\Facades\Auth;
         });
         Route::get('/kkedit', function () {
             return view('kkedit');
+        });
+        Route::get('/kategoritable', function () {
+            return view('kategoritable');
         });
 
     });

@@ -28,10 +28,19 @@
                 <div class=" col-md-4" >
                     <h6 style="color: #fff;">kata baru</h6>
                     <input id="katabaru" type="text" class="form-control mb-1" placeholder="masukkan kata" style="width: 100%;">  
+                    <p style="margin-left:6%; font-size:12px; color:#FF1C1C; font-weight: bold" id="errorKata" hidden="true"> Tidak boleh kosong </p>       
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-4">
                 <h6 style="color: #fff;">Deskripsi</h6>
                     <textarea id="descbaru" class="form-control" rows="1" ></textarea>
+                    <p style="margin-left:6%; font-size:12px; color:#FF1C1C; font-weight: bold" id="errorDesc" hidden="true"> Tidak boleh kosong </p>       
+                </div>
+                <div class="col-md-4">
+                <h6 style="color: #fff;">Kategori</h6>
+                <select class="form-control ">
+                    <option>Small select</option>
+                </select>
+                    <p style="margin-left:6%; font-size:12px; color:#FF1C1C; font-weight: bold" id="errorDesc" hidden="true"> Tidak boleh kosong </p>       
                 </div>
             </div>    
 
@@ -45,11 +54,13 @@
                         <div class="row"> 
                             <div class="col-md-4">
                                 <div class="form-check" id="tambahh">
-                                        <input type="text" class="form-control" id="hipernim" placeholder="tambah hipernim"/>
+                                    <input type="text" class="form-control" id="hipernim" placeholder="tambah hipernim"/>
+                                    <p style="margin-left:6%; font-size:12px; color:#FF1C1C; font-weight: bold" id="errorHipernim" hidden="true"> Tidak boleh kosong </p>       
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <textarea class="form-control" id="deskripsi" rows="1" placeholder="tambah hipernim"></textarea>
+                                <p style="margin-left:6%; font-size:12px; color:#FF1C1C; font-weight: bold" id="errorDescHipernim" hidden="true"> Tidak boleh kosong </p>       
                             </div>
                             <div class="col-md-2">
                                 <div col-md-6>
@@ -64,9 +75,9 @@
             <!-- susunan hipernim ================================================ -->
             <div class="mb-6" style="float:right; margin-bottom:60px    ">
                 <button onclick="window.location.href='/kbtable'" type="button" class="btn btn-danger mt-2 col-md-6" style="width: 80px;">batal</button>
-                <button onclick="window.location.href='/kbtable'" type="button" class="btn btn-success mt-2 col-md-6" id="simpan" style="width: 80px;">simpan</button>
+                <button type="button" class="btn btn-success mt-2 col-md-6" id="simpan" style="width: 80px;">simpan</button>
             </div>
-            
+        </div>   
     </div>
     <script>
         var hipernims=[];
@@ -93,30 +104,37 @@
         $('#btnOk').click(function(){
             $hipernim = $('#hipernim').val();
             $deskripsi = $('#deskripsi').val();
+            $('#errorHipernim').attr("hidden", true);
+            $('#errorDescHipernim').attr("hidden", true);
 
-            $currentKedalaman++;
-            $('#listContainer').append(`
-            <div id="hipernim`+$currentKedalaman+`">
-                <p style="color: #fff;">hipernim `+$currentKedalaman+`</p>
-                <div class="card flex-row mb-2 row" style="padding-left: 5px;">    
-                    <div class="col-md-10">`+$hipernim+`</br> ➨ `+$deskripsi+`</div>
-                    <div class="col-md-2">
-                        <button type="button" data-id="`+$currentKedalaman+`" class="btn btn-danger btn-delete mt-2 mb-2" style="width: 80px;">hapus</button>
+            if($hipernim != "" && $deskripsi != ""){
+                $currentKedalaman++;
+                $('#listContainer').append(`
+                <div id="hipernim`+$currentKedalaman+`">
+                    <p style="color: #fff;">hipernim `+$currentKedalaman+`</p>
+                    <div class="card flex-row mb-2 row" style="padding-left: 5px;">    
+                        <div class="col-md-10">`+$hipernim+`</br> ➨ `+$deskripsi+`</div>
+                        <div class="col-md-2">
+                            <button type="button" data-id="`+$currentKedalaman+`" class="btn btn-danger btn-delete mt-2 mb-2" style="width: 80px;">hapus</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-            `);
-            hipernims.push(new Classhipernim(
-                simpanId, $hipernim, $deskripsi,
-            ));
-            fd.append("hipernims[]", 
-                simpanId+"___"+$hipernim+"___"+$deskripsi
-            );
-            simpanId=0;
-            console.log($hipernim);
-            
-            $('#hipernim').val("")
-            $('#deskripsi').val("")
+                `);
+                hipernims.push(new Classhipernim(
+                    simpanId, $hipernim, $deskripsi,
+                ));
+                fd.append("hipernims[]", 
+                    simpanId+"___"+$hipernim+"___"+$deskripsi
+                );
+                simpanId=0;
+                console.log($hipernim);
+                
+                $('#hipernim').val("")
+                $('#deskripsi').val("")
+            } else {
+                if($hipernim == "") $('#errorHipernim').attr("hidden", false);
+                if($deskripsi == "") $('#errorDescHipernim').attr("hidden", false);
+            }
         });
         
         // ketika klik remove
@@ -135,18 +153,18 @@
         });
     // });
     //search kata
-        $('.search').on('input', function(){
-            $.get('/api/pencarian/noun', 
-                { "searchnoun": $(this).val() },
-                function(data) {
-                    console.log("tes");
-                    $("#listkata").html("");
-                    $.each(data, function(i,kb){
-                        $("#listkata").append('<option value='+kb['id_kb']+'>'+kb['nama_kb']+'</option>');
-                    });
-                }
-            )
-        });
+    $('.search').on('input', function(){
+        $.get('/api/pencarian/noun', 
+            { "searchnoun": $(this).val() },
+            function(data) {
+                console.log("tes");
+                $("#listkata").html("");
+                $.each(data, function(i,kb){
+                    $("#listkata").append('<option value='+kb['id_kb']+'>'+kb['nama_kb']+'</option>');
+                });
+            }
+        )
+    });
     
     // search hipernim
     $(function () {
@@ -171,19 +189,6 @@
                         response($.ui.autocomplete.filter(array,request.term));
                 }
             )
-                // $.getJSON('/hipernim?'+request.term,function(data){
-                //         var array = $.map(data,function(row){
-                //             return {
-                //                 value:row.id,
-                //                 label:row.name,
-                //                 name:row.name,
-                //                 buy_rate:row.buy_rate,
-                //                 sale_price:row.sale_price
-                //             }
-                //         })
-
-                //         response($.ui.autocomplete.filter(array,request.term));
-                // })
             },
             minLength:1,
             delay:500,
@@ -206,10 +211,11 @@
 
     // simpan
     $('#simpan').click(function(){
-            console.log("tes2");
+        $('#errorKata').attr("hidden", true);
+        $('#errorDesc').attr("hidden", true);
+        if($(katabaru).val() != "" && $(descbaru).val() != ""){
             fd.append('nama',$(katabaru).val());
             fd.append('desc',$(descbaru).val());
-            // fd.append('hipernim[]',hipernims);
 
             $.ajax({
                 headers: {'X-CSRF-TOKEN': $('meta[name-csrf-token]').attr('content') },
@@ -221,19 +227,12 @@
                 success: function(data) { 
 
                 }
-        })
-
-        // $.post('/api/savekb', 
-        //         fd,
-        //         function(data) {
-        //             console.log("tes");
-        //             $("#listkata").html("");
-        //             $.each(data, function(i,kb){
-        //                 $("#listkata").append('<option value='+kb['id_kb']+'>'+kb['nama_kb']+'</option>');
-        //             });
-        //         },
-        //         'application/json'
-        //     )   
+            })
+            window.location.href='/kbtable'
+        } else {
+            if($(katabaru).val() == "") $('#errorKata').attr("hidden", false);
+            if($(descbaru).val() == "") $('#errorDesc').attr("hidden", false);
+        }
     });
 
     //sweet alert berhasil disimpan    
