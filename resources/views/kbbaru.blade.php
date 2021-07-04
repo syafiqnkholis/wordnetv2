@@ -37,8 +37,10 @@
                 </div>
                 <div class="col-md-4">
                 <h6 style="color: #fff;">Kategori</h6>
-                <select class="form-control ">
-                    <option>Small select</option>
+                <select name="id_kategori" class="form-control ">
+                @foreach($kategori as $kategori)
+                    <option value="{{$kategori->id_kategori}}">{{$kategori -> nama_kategori}}</option>
+                @endforeach
                 </select>
                     <p style="margin-left:6%; font-size:12px; color:#FF1C1C; font-weight: bold" id="errorDesc" hidden="true"> Tidak boleh kosong </p>       
                 </div>

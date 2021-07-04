@@ -22,4 +22,11 @@ Route::get('/noun', 'SearchController@getNoun')->name('getNoun');
 Route::post('/savekb', 'NounController@simpannoun')->name('simpannoun');
 Route::post('/tampilkb', 'NounController@tampilnoun')->name('tampilnoun');
 Route::get('/hapuskb/{id}', 'NounController@hapusnoun')->name('hapusnoun');
+
+Route::get('/pencarian/verb', 'SearchkkController@searchverb')->name('carikata');
+Route::get('/verb', 'SearchkkController@getVerb')->name('getVerb');
+Route::post('/savekk', 'VerbController@simpanverb')->name('simpanverb');
+Route::post('/tampilkk', 'VerbController@tampilverb')->name('tampilverb');
+Route::get('/hapuskk/{id}', 'VerbController@hapusverb')->name('hapusverb');
+
 Route::get('/hapuskategori/{id}', 'KategoriController@delete')->name('deleteCategory');

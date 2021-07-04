@@ -18,12 +18,10 @@ use Illuminate\Support\Facades\Auth;
         Route::get('/kbtable', function () {
             return view('kbtable');
         })->name('kbtable');
-        Route::get('/kbbaru', function () {
-            return view('kbbaru');
-        })->name('kbbaru');
         // Route::get('/kbedit', function () {
         //     return view('kbedit');
         // });
+        Route::get('/kbbaru','NounController@showNewNounForm')->name('kbbaru');
         Route::get('/kbedit/{id}','NounController@edit')->name('kbedit');
         Route::post('/addHipernim','NounController@addHipernim');
         Route::get('/deleteHipernim/{id}','NounController@deleteHipernim');
@@ -34,17 +32,17 @@ use Illuminate\Support\Facades\Auth;
         Route::get('/kktable', function () {
             return view('kktable');
         })->name('kktable');
-        Route::get('/kkbaru', function () {
-            return view('kkbaru');
-        });
-        Route::get('/kkedit', function () {
-            return view('kkedit');
-        });
-
-        Route::get('/kbedittes/{id}','NounController@edit')->name('kbedit');
-        Route::post('/addHipernim','NounController@addHipernim');
-        Route::get('/deleteHipernim/{id}','NounController@deleteHipernim');
-        Route::post('/editFormProcess','NounController@editFormProcess');
+        // Route::get('/kkbaru', function () {
+        //     return view('kkbaru');
+        // });
+        // Route::get('/kkedit', function () {
+        //     return view('kkedit');
+        // });
+        Route::get('/kkbaru','VerbController@showNewVerbForm')->name('kkbaru');
+        Route::get('/kkedit/{id}','VerbController@edit')->name('kkedit');
+        Route::post('/addHipernimkk','VerbController@addHipernim');
+        Route::get('/deleteHipernimkk/{id}','VerbController@deleteHipernim');
+        Route::post('/editFormProcesskk','VerbController@editFormProcess');
 
         // Route::get('/kategoritable', function () {
         //     return view('kategoritable');
@@ -62,23 +60,30 @@ use Illuminate\Support\Facades\Auth;
         });
     Route::post('/halamanjarakkata', 'NounController@jarak');
     });
-
+    //halaman pencarian kata benda
+    Route::get('/halamanhipernim', function () {
+    return view('halamanhipernim');
+    });
     Route::get('/halamanhipernimkonten/{id}', 'NounController@display');
-
     Route::get('/halamanhipernimkonten', function () {
         return view('halamanhipernimkonten');
+    });
+
+    //halaman pencarian kata kerja
+    Route::get('/halamanhipernimkk', function () {
+        return view('halamanhipernimkk');
+        });
+    Route::get('/halamanhipernimkontenkk/{id}', 'verbController@display');
+    Route::get('/halamanhipernimkontenkk', function () {
+        return view('halamanhipernimkontenkk');
     });
     
 
     Route::get('/', function () {
     return view('halamanutama');
     });
-
-    Route::get('/halamanhipernim', function () {
-    return view('halamanhipernim');
-    });
-
     Route::get('/hipernim','SearchController@searchhipernim');
+    
     Route::get('admin/api/product','InvoiceController@getAutocompleteData'); 
 
     Auth::routes();

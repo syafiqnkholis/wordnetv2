@@ -21,6 +21,10 @@
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
     <link href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
+    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    
+    
     <!-- Styles -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
@@ -222,54 +226,65 @@
                 </div>
     </nav> -->
 
-        <nav class="row navbar m-0" style="width:100%; background-color: #0F3057;">
-            <div class="col-md-6" style="justify-content:left;">
-                <a class="navbar-brand" href="/" style="font-family: times new romance; color:#939698">
+        <nav class="row navbar m-0" style="width:100%; background-color: #1A2C43;">
+            <div class="col-md-2" style="justify-content:left;">
+                <a class="navbar-brand" href="/" style="font-family: 'Abhaya Libre', serif; color:#fff">
                     <img src="https://ugm.ac.id/images/optimasi/ugm_header.png" width="25" height="25" alt="">
                     WordNet UGM
                 </a>
+                
             </div>
             <!-- Right Side Of Navbar -->
-            <div class="col-md-6">
+            <div class="col-md-10">
 
                 <ul class="navbar-nav ml-auto">
                     <!-- Authentication Links -->
                     @guest
                         <div class="row">
-                            <li class="nav-item col-md-6">
+                            <li class="nav-item col-md-10 row">
+                                <a class="nav-link col-md-2" href="/">Halaman Utama</a>
+                                <a class="nav-link col-md-2" href="/">Seputar laman</a>
+                            </li>
+                            
+                            <li class="nav-item col-md-1">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Masuk') }}</a>
                             </li>
                             @if (Route::has('register'))
-                                <li class="nav-item col-md-6">
+                            <li class="nav-item col-md-1">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Daftar') }}</a>
                                 </li>
                         </div>
-                        @endif
+                            @endif
                     @else
-                        <li class="nav-item row pl-5">
+                        <div class="nav-item row">
                             @if (Auth::user()->role == 'admin')
 
-                                <div class="col-md-3 ml-5" style="float:right">
-                                    <a class="nav-link" href="{{ route('kbtable') }}">{{ __('Admin kb table') }}</a>
-                                    <a class="nav-link" href="{{ route('kktable') }}">{{ __('Admin kk table') }}</a>
-                                </div>
-                            @endif
+                                <div class="row col-md-10">
+                                    <div class="nav-item ">
+                                    <a class="nav-link" href="{{ route('kbtable') }}">{{ __('dashboard') }}</a>
+                                    </div>
+
+                                
+                                  
+                             @endif
+                        </div>
                             @if (Auth::user()->role == 'user')
-
-                                <div class="col-md-5">
-                                    User biasa Panel
-                                </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <li class="nav-item col-md-8 row">
+                                <a class="nav-link col-md-3" href="/">Halaman Utama</a>
+                                <a class="nav-link col-md-3" href="/">Seputar laman</a>
+                                </li>
+                            </div>
                             @endif
-                            <div class="col-md-3">
+                            <div class="col-md-1">
                                 <a href="" class="nav-link disabled">
-
                                     <i class="fas fa-user-alt">
-
                                     </i>
                                     {{ Auth::user()->name }}
                                 </a>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-1">
                                 <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                     document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
@@ -278,7 +293,7 @@
                                     @csrf
                                 </form>
                             </div>
-                        </li>
+                        </div>
                     @endguest
                 </ul>
             </div>
