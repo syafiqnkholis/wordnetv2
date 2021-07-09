@@ -24,7 +24,6 @@
     <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     
-    
     <!-- Styles -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
@@ -243,7 +242,7 @@
                         <div class="row">
                             <li class="nav-item col-md-10 row">
                                 <a class="nav-link col-md-2" href="/">Halaman Utama</a>
-                                <a class="nav-link col-md-2" href="/">Seputar laman</a>
+                                <!-- <a class="nav-link col-md-2" href="/">Seputar laman</a> -->
                             </li>
                             
                             <li class="nav-item col-md-1">
@@ -261,7 +260,7 @@
 
                                 <div class="row col-md-10">
                                     <div class="nav-item ">
-                                    <a class="nav-link" href="{{ route('kbtable') }}">{{ __('dashboard') }}</a>
+                                    <a class="nav-link" href="/dashboard">dashboard</a>
                                     </div>
 
                                 
@@ -273,7 +272,7 @@
                             <div class="col-md-10">
                                 <li class="nav-item col-md-8 row">
                                 <a class="nav-link col-md-3" href="/">Halaman Utama</a>
-                                <a class="nav-link col-md-3" href="/">Seputar laman</a>
+                                <!-- <a class="nav-link col-md-3" href="/">Seputar laman</a> -->
                                 </li>
                             </div>
                             @endif

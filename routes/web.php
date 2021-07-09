@@ -14,7 +14,11 @@ use Illuminate\Support\Facades\Auth;
 |
 */
     Route::middleware(['auth','admin'])->group(function () {
-        
+
+        Route::get('/dashboard', function () {
+            return view('dashboardadmin');
+        });
+
         Route::get('/kbtable', function () {
             return view('kbtable');
         })->name('kbtable');
