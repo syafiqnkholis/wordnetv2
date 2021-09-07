@@ -30,3 +30,4 @@ Route::post('/tampilkk', 'VerbController@tampilverb')->name('tampilverb');
 Route::get('/hapuskk/{id}', 'VerbController@hapusverb')->name('hapusverb');
 
 Route::get('/hapuskategori/{id}', 'KategoriController@delete')->name('deleteCategory');
+Route::get('/editkategori/{id}', 'KategoriController@edit')->name('editCategory');

@@ -30,6 +30,13 @@ use Illuminate\Support\Facades\Auth;
         Route::post('/addHipernim','NounController@addHipernim');
         Route::get('/deleteHipernim/{id}','NounController@deleteHipernim');
         Route::post('/editFormProcess','NounController@editFormProcess');
+
+        Route::get('/komentarkb','KomentarController@showkomentarkb');
+        Route::get('/komentarkk','KomentarController@showkomentarkk');
+        
+        
+        
+
         
         //route untuk kata kerja
 
@@ -63,15 +70,18 @@ use Illuminate\Support\Facades\Auth;
         return view('halamanjarakkata');
         });
     Route::post('/halamanjarakkata', 'NounController@jarak');
+    Route::post('/komentarkb/{id}','KomentarController@storekomentarkb')->name('komentarkb');
+    Route::post('/komentarkk/{id}','KomentarController@storekomentarkk')->name('komentarkk');
     });
+
     //halaman pencarian kata benda
     Route::get('/halamanhipernim', function () {
     return view('halamanhipernim');
     });
-    Route::get('/halamanhipernimkonten/{id}', 'NounController@display');
-    Route::get('/halamanhipernimkonten', function () {
-        return view('halamanhipernimkonten');
-    });
+    Route::get('/halamanhipernimkonten/{id}', 'NounController@display')->name('halamanhipernimkonten');
+    // Route::get('/halamanhipernimkonten', function () {
+    //     return view('halamanhipernimkonten');
+    // });
 
     //halaman pencarian kata kerja
     Route::get('/halamanhipernimkk', function () {
