@@ -32,10 +32,10 @@
                     <!-- <p class="card-text">Lihat data komentar dan masukan yang telah dimasukkan user.</p> -->
                     <div class="row">
                     <div col-md-6>
-                    <a href="#" class="btn btn-info mb-2 ml-2 mr-2">Kata Kerja</a>
+                    <a href="/komentarkb" class="btn btn-info mb-2 ml-2 mr-2">Kata Kerja</a>
                     </div>
                     <div col-md-6>
-                    <a href="#" class="btn btn-info mb-2 ml-2 mr-2">Kata Kerja</a>
+                    <a href="/komentarkk" class="btn btn-info mb-2 ml-2 mr-2">Kata Kerja</a>
                     </div>
                     </div>
             </div>

@@ -70,6 +70,19 @@ class NounController extends Controller{
 
     //Menghapus Kata benda
     public function hapusnoun($id){
+
+        $relations = Relation::where("id_kb", $id)->get();
+        foreach($relations as $relation){
+            $result = Relation::where("id_hipernim", $relation->id_hipernim)->count();
+            if($result < 2){ //make sure the hipernim just used in one noun
+                $id_hipernim = $relation->id_hipernim;
+                $relation->delete(); //detete the relation
+                Hipernim::where("id_hipernim", $id_hipernim)->delete(); //and delete the hipernim
+            } else { //delete the relation but not the hipernim
+                $relation->delete();
+            }
+        }
+
         KataBenda::where('id_kb',$id)->delete();
     }
 
