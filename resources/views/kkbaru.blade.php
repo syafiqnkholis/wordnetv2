@@ -154,23 +154,24 @@
             $currentKedalaman--;
         });
     // });
-    //search kata
-    $('.search').on('input', function(){
-        $.get('/api/pencarian/noun', 
-            { "searchnoun": $(this).val() },
-            function(data) {
-                console.log("tes");
-                $("#listkata").html("");
-                $.each(data, function(i,kb){
-                    $("#listkata").append('<option value='+kb['id_kb']+'>'+kb['nama_kb']+'</option>');
-                });
-            }
-        )
-    });
+    // //search kata
+    // $('.search').on('input', function(){
+    //     $.get('/api/pencarian/noun', 
+    //         { "searchnoun": $(this).val() },
+    //         function(data) {
+    //             console.log("tes");
+    //             $("#listkata").html("");
+    //             $.each(data, function(i,kb){
+    //                 $("#listkata").append('<option value='+kb['id_kb']+'>'+kb['nama_kb']+'</option>');
+    //             });
+    //         }
+    //     )
+    // });
     
     // search hipernim
     $(function () {
         $('#hipernim').autocomplete({
+            position: { my : "left top", at: "left bottom" },
             source:function(request,response){
                 $.get('/hipernim', 
                 { "searchhipernim": request.term },
@@ -188,7 +189,7 @@
                             }
                         })
 
-                        response($.ui.autocomplete.filter(array,request.term));
+                        response($.ui.autocomplete.filter(array,request.term).slice(0,5));
                 }
             )
             },

@@ -5,21 +5,6 @@
 
     <div class="row kblayout">
     
-        <!-- <div class="col-md-3 wrapper">
-            <div class="mt-3 ml-5 kolomkata">
-                            <div class="form-group">
-                                pilih kata
-                                <input type="text" class="form-control mb-2 search" placeholder="&#xF002; cari">
-                            
-                                <select multiple class="form-control search" id="listkata" style="height:300px">
-                                
-                                </select>
-                            </div>
-                            <div id="hasilkata">
-
-                            </div>
-                    </div>
-        </div> -->
         <!-- konten tengah  =============================================== --> 
         
         <div class="col-md-8" >
@@ -29,9 +14,11 @@
             <div class="row mt-4">
                 <div class=" col-md-4" >
                     <h6 style="color: #fff;">kata baru</h6>
-                    <input id="katabaru" name="katabaru" type="text" class="form-control mb-1" value="{{$noun->nama_kb}}" placeholder="masukkan kata" style="width: 100%;">  
                     @if($message = Session::get('error3'))
+                    <input id="katabaru" name="katabaru" type="text" class="form-control mb-1" style="width: 100%;">  
                         <p style="margin-left:6%; font-size:12px; color:#FF1C1C; font-weight: bold"> {{ $message }} </p>       
+                    @else
+                    <input id="katabaru" name="katabaru" type="text" class="form-control mb-1" value="{{$noun->nama_kb}}"  style="width: 100%;">  
                     @endif
                 </div>
                 <div class="col-md-4">
@@ -48,9 +35,6 @@
                     <option value="{{$kategori->id_kategori}}" selected="{{$kategori->id_kategori == $noun->id_kategori}}">{{$kategori -> nama_kategori}}</option>
                 @endforeach
                 </select>
-                    @if($message = Session::get('error4'))
-                        <p style="margin-left:6%; font-size:12px; color:#FF1C1C; font-weight: bold"> {{ $message }} </p>       
-                    @endif
                 </div>
             </div>    
 
@@ -117,19 +101,16 @@
         var fd= new FormData();
         var simpanId =0;
 
-        $('#listkata').on('change', function(){
-            $('#editkata').val(this.value);
-        });
-        $('#tambahh').on('change', function(){
-            $('#tambahh input[type=text]').prop('disabled',false);
-            $('#pilihh input[type=text]').prop('disabled',true);
-            $('#deskripsi').prop('disabled',false);
-        });
-        $('#pilihh').on('change', function(){
-            $('#tambahh input[type=text]').prop('disabled',true);
-            $('#pilihh input[type=text]').prop('disabled',false);
-            $('#deskripsi').prop('disabled',true);
-        });
+        // $('#tambahh').on('change', function(){
+        //     $('#tambahh input[type=text]').prop('disabled',false);
+        //     $('#pilihh input[type=text]').prop('disabled',true);
+        //     $('#deskripsi').prop('disabled',false);
+        // });
+        // $('#pilihh').on('change', function(){
+        //     $('#tambahh input[type=text]').prop('disabled',true);
+        //     $('#pilihh input[type=text]').prop('disabled',false);
+        //     $('#deskripsi').prop('disabled',true);
+        // });
 
     // ketika klik ok
         $currentKedalaman = 0;
@@ -178,30 +159,19 @@
             $currentKedalaman--;
         });
     // });
-    //search kata
-        $('.search').on('input', function(){
-            $.get('/api/pencarian/noun', 
-                { "searchnoun": $(this).val() },
-                function(data) {
-                    console.log("tes");
-                    $("#listkata").html("");
-                    $.each(data, function(i,kb){
-                        $("#listkata").append('<option value='+kb['id_kb']+'>'+kb['nama_kb']+'</option>');
-                    });
-                }
-            )
-        });
     
     // search hipernim
     $(function () {
+        
         $('#hipernim').autocomplete({
+            position: { my : "left top", at: "left bottom" },
             source:function(request,response){
                 $.get('/hipernim', 
                 { "searchhipernim": request.term },
                 function(data) {
-                    $.each(data, function(i,kb){
-                        $("#listkata").append('<option value='+kb['id_kb']+'>'+kb['nama_kb']+'</option>');
-                    });
+                    // $.each(data, function(i,kb){
+                    //     $("#listkata").append('<option value='+kb['id_kb']+'>'+kb['nama_kb']+'</option>');
+                    // });
                     var array = $.map(data,function(row){
                             return {
                                 value:row.hipernim,
@@ -212,22 +182,10 @@
                             }
                         })
 
-                        response($.ui.autocomplete.filter(array,request.term));
+                        response($.ui.autocomplete.filter(array,request.term).slice(0,5));
                 }
             )
-                // $.getJSON('/hipernim?'+request.term,function(data){
-                //         var array = $.map(data,function(row){
-                //             return {
-                //                 value:row.id,
-                //                 label:row.name,
-                //                 name:row.name,
-                //                 buy_rate:row.buy_rate,
-                //                 sale_price:row.sale_price
-                //             }
-                //         })
-
-                //         response($.ui.autocomplete.filter(array,request.term));
-                // })
+               
             },
             minLength:1,
             delay:500,
@@ -236,7 +194,6 @@
                 $('#desc_hipernim').val(ui.item.desc_hipernim)
                 $('#id_hipernim').val(ui.item.id)
                 simpanId = ui.item.id
-                console.log(ui.item.id)
             }
         })
     });
@@ -268,21 +225,8 @@
                 }
         })
 
-        // $.post('/api/savekb', 
-        //         fd,
-        //         function(data) {
-        //             console.log("tes");
-        //             $("#listkata").html("");
-        //             $.each(data, function(i,kb){
-        //                 $("#listkata").append('<option value='+kb['id_kb']+'>'+kb['nama_kb']+'</option>');
-        //             });
-        //         },
-        //         'application/json'
-        //     )   
     });
 
-    //sweet alert berhasil disimpan    
+    
     </script>
 @endsection
-
-@section("footer")

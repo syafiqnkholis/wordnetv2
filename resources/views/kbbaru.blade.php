@@ -171,6 +171,7 @@
     // search hipernim
     $(function () {
         $('#hipernim').autocomplete({
+            position: { my : "left top", at: "left bottom" },
             source:function(request,response){
                 $.get('/hipernim', 
                 { "searchhipernim": request.term },
@@ -188,7 +189,7 @@
                             }
                         })
 
-                        response($.ui.autocomplete.filter(array,request.term));
+                        response($.ui.autocomplete.filter(array,request.term).slice(0,5));
                 }
             )
             },

@@ -21,6 +21,8 @@ class KategoriController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
+    // Membuat kategori baru 
     public function createKategori(Request $request){
         $kategori = Kategori::create([
             'nama_kategori' => $request -> kategori 
@@ -30,6 +32,7 @@ class KategoriController extends Controller
 
     }
 
+    //menampilkan kategori dari database
     public function showKategori(){
         $kategori = Kategori::get();
         return view('kategoritable', compact('kategori'));
@@ -37,6 +40,7 @@ class KategoriController extends Controller
 
     //Menghapus Kategori
     public function delete($id){
+        //mengecek kategori tersebut dipakai oleh kata benda/ kata kerja atau tidak
         $kataBenda = KataBenda::where("id_kategori", $id)->count();
         $kataKerja = KataKerja::where("id_kategori", $id)->count();
 
@@ -50,6 +54,7 @@ class KategoriController extends Controller
         }
     }
 
+    //edit kategori
     public function edit(Request $request, $id){
         $kategori = Kategori::find($id);
         $kategori->update([

@@ -58,7 +58,7 @@
         
 
         
-        <div class="sideup" id="desc" style="padding-left: 350px; padding-right: 330px;padding-bottom:100px;margin-top: 300px;"> 
+        <div class="sideup" id="desc" style="padding-left: 350px; padding-right: 330px;padding-bottom:100px;margin-top: 320px;"> 
                 <h6 class="titlehp mt-2 ml-3" style="color:#fff">Apa itu WordNet Bahasa Indonesia?</h6>
                 <p class="ml-3  desc-lay">WordNet berbahasa Indonesia merupakan basis data leksikal bahasa Indonesia yang mengacu pada struktur sistem WordNet yang diciptakan oleh Princeton University. Dimana masing-masing kata dapat memiliki makna yang jamak juga dapat memiliki relasi antara kata satu dengan kata lainnya.</p>
                 <h6 class="titlehp mt-2 ml-3" style="color:#fff">WordNet UGM</h6>

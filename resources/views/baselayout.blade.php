@@ -19,8 +19,10 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-    <link href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
+    <!-- <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script> -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js">
+    <!-- <link href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" /> -->
     <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     
@@ -195,7 +197,7 @@
 
 </head>
 
-<body class="bg">
+<body class="bg" style="height:100% !important">
     <div class="bg">
 
         <!-- <nav class="row navbar m-0" style="width:100%; background-color: #0F3057;">

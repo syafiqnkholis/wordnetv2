@@ -17,7 +17,7 @@
       <div class="modal-body">
             <div class=" col-md-8">
                     <h6">Kategori baru</h6>
-                    <input id="katabaru" name="kategori" type="text" class="form-control mb-1" placeholder="masukkan kata" style="width: 100%;">
+                    <input id="katabaru" name="kategori" type="text" class="form-control mb-1" placeholder="masukkan kata" style="width: 100%;" required>
                     <p style="margin-left:6%; font-size:12px; color:#FF1C1C; font-weight: bold" id="errorKata" hidden="true"> Tidak boleh kosong </p>       
             </div>
       </div>
