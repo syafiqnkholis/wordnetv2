@@ -37,7 +37,7 @@ class VerbController extends Controller{
                 $id_hipernim = $hipernim[0];
             }
             
-            $relation = new Relation;
+            $relation = new RelationsKk;
             $relation->id_hipernim = $id_hipernim;
             $relation->id_kk= $kk->id_kk;
             $relation->kedalaman= $kedalaman;
@@ -150,7 +150,7 @@ class VerbController extends Controller{
             if(isset($request->hipernim) && isset($request->desc_hipernim)){
                 $kedalaman = 1;
                 //Mendapatkan kedalaman paling besar
-                $verb = Relation::where('id_kk', '=', $request->id_kk)->orderBy('kedalaman','DESC')->first();
+                $verb = RelationsKk::where('id_kk', '=', $request->id_kk)->orderBy('kedalaman','DESC')->first();
                 if($verb) $kedalaman = $verb->kedalaman+1;
         
                 if(isset($request->id_hipernim)){
@@ -165,7 +165,7 @@ class VerbController extends Controller{
                 }
         
                 //Menyimpan relasi antara kata benda dan hipernim
-                $relation = new Relation;
+                $relation = new RelationsKk;
                 $relation->id_hipernim = $id_hipernim;
                 $relation->id_kk= $request->id_kk;
                 $relation->kedalaman= $kedalaman;
@@ -205,13 +205,13 @@ class VerbController extends Controller{
 
     //Menghapus relasi hipernim saat edit
     public function deleteHipernim($id){
-        $relasiYangAkanDihapus = Relation::find($id);
+        $relasiYangAkanDihapus = RelationsKk::find($id);
         if($relasiYangAkanDihapus){
             $id_kk = $relasiYangAkanDihapus->id_kk;
             $relasiYangAkanDihapus->delete();
 
             //Mengurangi kedalaman
-            $relations = Relation::where("id_kk", $id_kk)->get();
+            $relations = RelationsKk::where("id_kk", $id_kk)->get();
             foreach($relations as $relation){
                 if($relation->kedalaman > $relasiYangAkanDihapus->kedalaman){
                     $relation->kedalaman = $relation->kedalaman-1;

@@ -2,7 +2,7 @@
 @section('title', '- tampilkan hasil hipernim')
 @section('editStatus', 'active')
 @section('content')
-    <div style="padding-bottom: 26px;">
+    <div class="pagesize" style="padding-bottom: 26px;">
         <div>
                 <!-- <div class="mt-1">
                     <button class="btn setting" id="btn-jarak">

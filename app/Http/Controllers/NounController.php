@@ -86,7 +86,7 @@ class NounController extends Controller{
         KataBenda::where('id_kb',$id)->delete();
     }
 
-    //Menampilkan sebuah kata benda beserta hipernimnya
+    //Menampilkan sebuah kata benda yang dipilih beserta hipernimnya (halaman hasil pencarian kata benda)
     public function display($id){   
         $noun = KataBenda::with("relations.hipernim")
             ->where('id_kb', '=', $id)->first();

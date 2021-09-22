@@ -1,6 +1,6 @@
 @extends('baselayout')
 @section('content')
-<div >
+<div class="pagesize">
     <div class="row justify-content-center">
         <div class="col-md-8" style="margin-top:80px">
             <div class="card">

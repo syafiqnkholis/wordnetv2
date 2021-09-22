@@ -3,7 +3,7 @@
 @section('baruStatus', 'active')
 @section('content')
 
-    <div class="row kblayout">
+    <div class="row kblayout pagesize">
     
         <!-- <div class="col-md-3 wrapper">
             <div class="mt-3 ml-5 kolomkata">

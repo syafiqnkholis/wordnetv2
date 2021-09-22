@@ -2,7 +2,7 @@
 @section('title', '- tampilkan halaman jarak kata benda')
 @section('editStatus', 'active')
 @section('content')
-<div class="bg">
+<div class="bg pagesize">
     <div style="padding-bottom: 26px;">
     <div class="row" style="margin:0">
     <!-- jarak kata -->

@@ -5,27 +5,12 @@
 
     <div class="row kblayout">
     
-        <!-- <div class="col-md-3 wrapper">
-            <div class="mt-3 ml-5 kolomkata">
-                            <div class="form-group">
-                                pilih kata
-                                <input type="text" class="form-control mb-2 search" placeholder="&#xF002; cari">
-                            
-                                <select multiple class="form-control search" id="listkata" style="height:300px">
-                                
-                                </select>
-                            </div>
-                            <div id="hasilkata">
-
-                            </div>
-                    </div>
-        </div> -->
         <!-- konten tengah  =============================================== --> 
         
         <div class="col-md-8" >
             <form method="POST" action="{{ action('VerbController@editFormProcess') }}">
             @csrf
-            <h4 style="color: #fff;" >KATA BENDA</h4>
+            <h4 style="color: #fff;" >KATA KERJA</h4>
             <div class="row mt-4">
                 <div class=" col-md-4" >
                     <h6 style="color: #fff;">kata baru</h6>
@@ -62,9 +47,9 @@
                     <div id="hipernim{{$hipernim->kedalaman}}">
                         <p style="color: #fff;">hipernim {{$hipernim->kedalaman}}</p>
                         <div class="card flex-row mb-2 row" style="padding-left: 5px;">    
-                            <div class="col-md-10">{{$hipernim->hipernim->hipernim}}</br> ➨ {{$hipernim->hipernim->desc_hipernim}}</div>
+                            <div class="col-md-10">{{$hipernim->hipernim}}</br> ➨ {{$hipernim->hipernim->desc_hipernim}}</div>
                             <div class="col-md-2">
-                                <a href="/deleteHipernim/{{$hipernim->id}}" class="btn btn-danger btn-delete mt-2 mb-2" style="width: 80px;">hapus</a>
+                                <a href="/deleteHipernimkk/{{$hipernim->id}}" class="btn btn-danger btn-delete mt-2 mb-2" style="width: 80px;">hapus</a>
                                 <!-- <button type="button" data-id="{{$hipernim->id}}" class="btn btn-danger btn-delete mt-2 mb-2" style="width: 80px;">hapus</button> -->
                             </div>
                         </div>
@@ -197,38 +182,22 @@
         $('#hipernim').autocomplete({
             position: { my : "left top", at: "left bottom" },
             source:function(request,response){
-                $.get('/hipernim', 
-                { "searchhipernim": request.term },
+                $.get('/hipernimkk', 
+                { "searchhipernimsKk": request.term },
                 function(data) {
-                    $.each(data, function(i,kk){
-                        $("#listkata").append('<option value='+kk['id_kk']+'>'+kk['nama_kk']+'</option>');
-                    });
                     var array = $.map(data,function(row){
-                            return {
-                                value:row.hipernim,
-                                id:row.id_hipernim,
-                                label:row.hipernim,
-                                hipernim:row.hipernim,
-                                desc_hipernim:row.desc_hipernim
-                            }
-                        })
+                        return {
+                            value:row.hipernim_kk,
+                            id:row.id_hipernim_kk,
+                            label:row.hipernim_kk,
+                            hipernim:row.hipernim_kk,
+                            desc_hipernim:row.desc_hipernim_kk
+                        }
+                    })
 
-                        response($.ui.autocomplete.filter(array,request.term).slice(0,5));
+                    response($.ui.autocomplete.filter(array,request.term).slice(0,5));
                 }
             )
-                // $.getJSON('/hipernim?'+request.term,function(data){
-                //         var array = $.map(data,function(row){
-                //             return {
-                //                 value:row.id,
-                //                 label:row.name,
-                //                 name:row.name,
-                //                 buy_rate:row.buy_rate,
-                //                 sale_price:row.sale_price
-                //             }
-                //         })
-
-                //         response($.ui.autocomplete.filter(array,request.term));
-                // })
             },
             minLength:1,
             delay:500,
@@ -267,23 +236,8 @@
                 success: function(data) { 
 
                 }
-        })
-
-        // $.post('/api/savekk', 
-        //         fd,
-        //         function(data) {
-        //             console.log("tes");
-        //             $("#listkata").html("");
-        //             $.each(data, function(i,kk){
-        //                 $("#listkata").append('<option value='+kk['id_kk']+'>'+kk['nama_kk']+'</option>');
-        //             });
-        //         },
-        //         'application/json'
-        //     )   
+        }) 
     });
 
-    //sweet alert berhasil disimpan    
     </script>
 @endsection
-
-@section("footer")

@@ -3,7 +3,7 @@
 @section('editStatus', 'active')
 @section('content')
 
-    <div class="row ml-4 mt-4">
+    <div class="pagesize" ml-4 mt-4">
         <ul class="list-group" style="width:200px">
             <?php $no=1 ?>
             @foreach($komentarkb as $masukannoun)

@@ -169,9 +169,6 @@
                 $.get('/hipernim', 
                 { "searchhipernim": request.term },
                 function(data) {
-                    // $.each(data, function(i,kb){
-                    //     $("#listkata").append('<option value='+kb['id_kb']+'>'+kb['nama_kb']+'</option>');
-                    // });
                     var array = $.map(data,function(row){
                             return {
                                 value:row.hipernim,

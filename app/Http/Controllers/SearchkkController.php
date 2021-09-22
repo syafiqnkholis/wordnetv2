@@ -37,7 +37,7 @@ class SearchkkController extends Controller
         
         if($id_kk){
 
-            $verb = KataKerja::with("relations.hipernimsKk")
+            $verb = KataKerja::with("relations.hipernim")
             // ->where('nama_kb', 'LIKE', '%' . $kata . '%')
             ->where('id_kk', '=', $id_kk)->first();
             // if(count($noun) >0){
@@ -58,7 +58,7 @@ class SearchkkController extends Controller
         
         if($hipernimskk){
 
-            $hip=Hipernim::where('hipernim_kk', 'LIKE', $hipernim . '%')
+            $hip=HipernimsKk::where('hipernim_kk', 'LIKE', $hipernimskk . '%')
                             ->get();
             if(count($hip) >0){
                 // dd($noun);

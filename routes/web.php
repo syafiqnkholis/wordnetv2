@@ -97,6 +97,7 @@ use Illuminate\Support\Facades\Auth;
     return view('halamanutama');
     });
     Route::get('/hipernim','SearchController@searchhipernim');
+    Route::get('/hipernimkk','SearchkkController@searchhipernimsKk');
     
     Route::get('admin/api/product','InvoiceController@getAutocompleteData'); 
 

@@ -2,7 +2,7 @@
 @section('title', '- tampilkan hasil hipernim')
 @section('editStatus', 'active')
 @section('content')
-    <div style="padding-bottom: 26px;">
+    <div class="pagesize" style="padding-bottom: 26px;"> 
         <div>
         </div>
         <div class="row bg" style="margin:0">
@@ -11,7 +11,7 @@
         </div>
 
         <!-- konten tengah  =============================================== --> 
-        <div class="col-md-6 mt-3">
+        <div class="col-md-6 mt-3 ">
             <div class="row">
             <div class="col-md-12">
                 <h2 style="color: #fff; font-size: 20px;">Pencarian Kata Benda</h2>
@@ -32,11 +32,11 @@
 
 
     <script>
+        //jqueri untuk menampilkan kata yang dicari
     $('#inputquery').on('input', function(){
         $.get('/api/pencarian/noun', 
         { "searchnoun": $(this).val() },
         function(data) {
-            console.log(data.length<1);
             $("#resultContainer").html(""); 
             if(data.length<1) $("#resultContainer").html("<p style='color:red'>tidak ada pencarian</p>"); 
             $.each(data, function(i,kb){

@@ -6,6 +6,7 @@
     <div class="bg">
         <div class="row">
         <div class="col-md-3 mt-3">
+        <div class=" ml-4" style="color:white; padding-left:20px"><a href="#desc">Apa itu WordNet UGM? </a></div>    
         </div>
 
    
@@ -15,20 +16,11 @@
         <div class="col-md-6 mt-3">
             <div class="row" style="margin-top: 100px;">
                 <div>
-                <img src="{{ asset('img/logo-putih.png') }}" style="width: 180px;" alt="Logo UGM">
+                <img src="{{ asset('img/logo-putih.png') }}" style="width: 200px;" alt="Logo UGM">
                 </div>
                 <div class="ml-4">
-                    <div class="judulhome">Wordnet UGM</div>
+                    <div class="judulhome" >Wordnet UGM</div>
                     <div class="ml-4" style="float:center;">
-
-                        <!-- <div class="dropdown btn btn-light">
-                        <button onclick="myFunction()" class="dropbtn"><b>Pencarian<b></button>
-                        <div id="myDropdown" class="dropdown-content">
-                            <a href="#">Link 1</a>
-                            <a href="#">Link 2</a>
-                            <a href="#">Link 3</a>
-                        </div>
-                        </div> -->
                         <div class="row">
                         <div class="dropdown">
                         <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  style="width: 200px; color:#0F3057">
@@ -39,9 +31,7 @@
                             <a class="dropdown-item" href="/halamanhipernimkk">Kata Kerja</a>
                             </div>
                         <button onclick="window.location.href='/halamanjarakkata'" class="btn btn-light" style="width: 200px; color:#0F3057" ><b>Hitung jarak kata</b></button>
-                        </div>
-
-                        
+                        </div>                        
                     </div>
                 </div>
             </div>
@@ -65,8 +55,9 @@
                 <p class="ml-3  desc-lay">WordNet® UGM merupakan sistem WordNet berbahasa Indonesia yang dikembangkan oleh dosen dan mahasiswa UGM. WordNet ini dibangun dengan maksud untuk membantu pengguna dalam menemukan makna suatu kata, relasi antar kata, dan kedalaman antar kata. Yang difokuskan dalam WordNet ini yakni penggunaan hipernim dan hiponim kata. Sehingga diharapkan sistem ini dapat membantu pengguna dalam membantu memberikan informasi dan tolak ukur dalam kegiatan penulisan berbahasa Indonesia.</p>
                 <h6 class="titlehp mt-2 ml-3" style="font-size: 30px; color:#fff">Jarak Kata</h6>
                 <p class=" ml-3  desc-lay" > Jarak kata merupakan salah satu fitur dalam WordNet UGM yang mana berguna untuk menghitung jarak hubungan tiap katanya. Kata yang dapat dicari jaraknya hanyalah kata yang berkategori kata benda. Fitur ini diharapkan dapat bermanfaat untuk membantu pengguna dalam menentukan kedekatan hubungan antara kata benda satu dengan kata benda lainnya, serta membantu dalam proses pelatihan bahasa untuk kecerdasan buatan.</p>
+                <button class="btn btn-info"> <a href="#">Kembali</a></button>
         </div>
-            
+           
     </div>
     
     

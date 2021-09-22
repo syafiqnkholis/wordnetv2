@@ -41,6 +41,14 @@
 
 
     <style>
+
+        #page-container {
+        position: relative;
+        min-height: 100vh;
+        }
+        .pagesize{
+            min-height:85vh;
+        }
         .bg {}
 
         /* css navbar */
@@ -127,7 +135,7 @@
         }
 
         .footer {
-            position: fixed;
+            position:inherit;
             left: 0;
             bottom: 0;
             width: 100%;
@@ -140,6 +148,9 @@
             display: inline block;
         }
 
+        html{
+            scroll-behavior: smooth;
+        }
         html,
         body {
             background-color: #fff;
@@ -198,7 +209,7 @@
 </head>
 
 <body class="bg" style="height:100% !important">
-    <div class="bg">
+    <div class="bg"  id="page-container">
 
         <!-- <nav class="row navbar m-0" style="width:100%; background-color: #0F3057;">
             <div class="col-md-6" style="justify-content:left;">
