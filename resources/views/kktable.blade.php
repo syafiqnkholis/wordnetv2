@@ -34,7 +34,7 @@
                         <th>ID</th>
                         <th>Nama</th>
                         <th>Deskripsi</th>
-                        <th>setting</th>
+                        <th>Pengaturan</th>
                     </thead>
                     <tbody>
                     </tbody>

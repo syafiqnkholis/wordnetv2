@@ -23,10 +23,10 @@
         <!-- konten tengah  =============================================== --> 
         
         <div class="col-md-8" >
-            <h4 style="color: #fff;" >KATA BENDA</h4>
+            <h4 style="color: #fff;" >KATA BENDA BARU</h4>
             <div class="row mt-4">
                 <div class=" col-md-4" >
-                    <h6 style="color: #fff;">kata baru</h6>
+                    <h6 style="color: #fff;">Kata baru</h6>
                     <input id="katabaru" type="text" class="form-control mb-1" placeholder="masukkan kata" style="width: 100%;">  
                     <p style="margin-left:6%; font-size:12px; color:#FF1C1C; font-weight: bold" id="errorKata" hidden="true"> Tidak boleh kosong </p>       
                 </div>
@@ -49,7 +49,7 @@
             <!-- susunan hipernim ================================================ -->
             <div class="row" >
                 <div class="col-md-12">
-                    <h6 style="color: #fff;"> masukkan hipernim <h6>
+                    <h6 style="color: #fff;"> Masukkan hipernim <h6>
                     <div id="listContainer" class="col-md-12 mt-2" >
                     </div>
                     <div class="card mb-3">

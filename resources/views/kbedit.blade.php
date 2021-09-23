@@ -10,10 +10,10 @@
         <div class="col-md-8" >
             <form method="POST" action="{{ action('NounController@editFormProcess') }}">
             @csrf
-            <h4 style="color: #fff;" >KATA BENDA</h4>
+            <h4 style="color: #fff;" >EDIT KATA BENDA</h4>
             <div class="row mt-4">
                 <div class=" col-md-4" >
-                    <h6 style="color: #fff;">kata baru</h6>
+                    <h6 style="color: #fff;">Kata baru</h6>
                     @if($message = Session::get('error3'))
                     <input id="katabaru" name="katabaru" type="text" class="form-control mb-1" style="width: 100%;">  
                         <p style="margin-left:6%; font-size:12px; color:#FF1C1C; font-weight: bold"> {{ $message }} </p>       

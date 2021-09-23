@@ -310,7 +310,7 @@
             </div>
         </nav>
 
-        <div>
+        <div class="pagesize">
             @yield('content')
         </div>
 

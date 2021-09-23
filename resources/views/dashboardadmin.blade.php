@@ -3,7 +3,7 @@
 @section('editStatus', 'active')
 @section('content')
 <div>
-<div class="pagesize row">
+<div class="pagesize row" style="padding:20px">
         <div class=" card-position ml-4">
             <div class="card" style="width: 15rem; text-align: center;">
                     <h5 class="card-title">Kategori</h5>
@@ -37,7 +37,7 @@
                     <!-- <p class="card-text">Lihat data komentar dan masukan yang telah dimasukkan user.</p> -->
                     <div class="row">
                     <div col-md-6>
-                    <a href="/komentarkb" class="btn btn-info mb-2 ml-2 mr-2">Kata Kerja</a>
+                    <a href="/komentarkb" class="btn btn-info mb-2 ml-2 mr-2">Kata Benda</a>
                     </div>
                     <div col-md-6>
                     <a href="/komentarkk" class="btn btn-info mb-2 ml-2 mr-2">Kata Kerja</a>

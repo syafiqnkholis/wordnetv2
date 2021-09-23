@@ -9,21 +9,21 @@
         @csrf
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">BUAT KATEGORI</h5>
+        <h5 class="modal-title" id="exampleModalLabel">BUAT KATEGORI BARU</h5>
         <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button> -->
       </div>
       <div class="modal-body">
-            <div class=" col-md-8">
+            <div>
                     <h6">Kategori baru</h6>
                     <input id="katabaru" name="kategori" type="text" class="form-control mb-1" placeholder="masukkan kata" style="width: 100%;" required>
                     <p style="margin-left:6%; font-size:12px; color:#FF1C1C; font-weight: bold" id="errorKata" hidden="true"> Tidak boleh kosong </p>       
             </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit    " class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+        <button type="submit    " class="btn btn-primary">Simpan</button>
       </div>
     </div>
     </form>
@@ -35,7 +35,7 @@
   <div class="modal-dialog" role="document">
     <form method="POST" action="{{ action('KategoriController@createKategori') }}">
         @csrf
-    <div class="modal-content">
+    <div class="modal-content ">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">EDIT KATEGORI</h5>
         <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -43,21 +43,22 @@
         </button> -->
       </div>
       <div class="modal-body">
-            <div class=" col-md-8">
+            <div>
                     <h6">Kategori baru</h6>
                     <input id="old_category" name="kategori" type="text" class="form-control mb-1" placeholder="masukkan kata" style="width: 100%;">
                     <p style="margin-left:6%; font-size:12px; color:#FF1C1C; font-weight: bold" id="errorKata" hidden="true"> Tidak boleh kosong </p>       
             </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" id="btnUpdate">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+        <button type="button" class="btn btn-primary" id="btnUpdate">Simpan</button>
       </div>
     </div>
     </form>
   </div>
 </div>
 
+<!-- modal hapus kategori -->
 <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -68,8 +69,8 @@
                 Apakah anda yakin?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn dbtn-efault" data-dismiss="modal">Cancel</button>
-                <button class="btn btn-danger" id="btn-ok">Delete</button>
+                <button type="button" class="btn dbtn-efault" data-dismiss="modal">Batal</button>
+                <button class="btn btn-danger" id="btn-ok">Hapus</button>
             </div>
         </div>
     </div>
@@ -89,7 +90,7 @@
                     <thead class="thead-light">
                         <th>ID</th>
                         <th>Nama Kategori</th>
-                        <th>setting</th>
+                        <th>Pengaturan</th>
                     </thead>
                     <tbody>
                     @foreach($kategori as $cat)

@@ -2,7 +2,7 @@
 @section('title', '- tampilkan hasil hipernim')
 @section('editStatus', 'active')
 @section('content')
-<div class="bg">
+<div class="bg pagesize">
     <div style="padding-bottom: 26px;">
         <!-- navbar -->
         <div class="row" style="margin:0">
