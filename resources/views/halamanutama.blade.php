@@ -48,14 +48,15 @@
         
 
         
-        <div class="sideup" id="desc" style="padding-left: 350px; padding-right: 330px;padding-bottom:100px;margin-top: 320px;"> 
+        <div class="sideup" id="desc" style="padding-left: 350px; padding-right: 330px;padding-bottom:30px;margin-top: 320px;"> 
                 <h6 class="titlehp mt-2 ml-3" style="color:#fff">Apa itu WordNet Bahasa Indonesia?</h6>
                 <p class="ml-3  desc-lay">WordNet berbahasa Indonesia merupakan basis data leksikal bahasa Indonesia yang mengacu pada struktur sistem WordNet yang diciptakan oleh Princeton University. Dimana masing-masing kata dapat memiliki makna yang jamak juga dapat memiliki relasi antara kata satu dengan kata lainnya.</p>
                 <h6 class="titlehp mt-2 ml-3" style="color:#fff">WordNet UGM</h6>
                 <p class="ml-3  desc-lay">WordNet® UGM merupakan sistem WordNet berbahasa Indonesia yang dikembangkan oleh dosen dan mahasiswa UGM. WordNet ini dibangun dengan maksud untuk membantu pengguna dalam menemukan makna suatu kata, relasi antar kata, dan kedalaman antar kata. Yang difokuskan dalam WordNet ini yakni penggunaan hipernim dan hiponim kata. Sehingga diharapkan sistem ini dapat membantu pengguna dalam membantu memberikan informasi dan tolak ukur dalam kegiatan penulisan berbahasa Indonesia.</p>
                 <h6 class="titlehp mt-2 ml-3" style="font-size: 30px; color:#fff">Jarak Kata</h6>
                 <p class=" ml-3  desc-lay" > Jarak kata merupakan salah satu fitur dalam WordNet UGM yang mana berguna untuk menghitung jarak hubungan tiap katanya. Kata yang dapat dicari jaraknya hanyalah kata yang berkategori kata benda. Fitur ini diharapkan dapat bermanfaat untuk membantu pengguna dalam menentukan kedekatan hubungan antara kata benda satu dengan kata benda lainnya, serta membantu dalam proses pelatihan bahasa untuk kecerdasan buatan.</p>
-                <button class="btn btn-info"> <a href="#">Kembali</a></button>
+                <button class="btn btn-info"  onclick="window.location.href='#'">Kembali</button>
+                
         </div>
            
     </div>

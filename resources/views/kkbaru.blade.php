@@ -1,5 +1,5 @@
 @extends('baselayout')
-@section('title', '- Tambah Kata Benda')
+@section('title', '- Tambah Kata Kerja')
 @section('baruStatus', 'active')
 @section('content')
 
@@ -23,7 +23,7 @@
         <!-- konten tengah  =============================================== --> 
         
         <div class="col-md-8" >
-            <h4 style="color: #fff;" >KATA BENDA</h4>
+            <h4 style="color: #fff;" >KATA KERJA</h4>
             <div class="row mt-4">
                 <div class=" col-md-4" >
                     <h6 style="color: #fff;">kata baru</h6>
@@ -37,7 +37,7 @@
                 </div>
                 <div class="col-md-4">
                 <h6 style="color: #fff;">Kategori</h6>
-                <select name="id_kategori" class="form-control ">
+                <select name="id_kategori" id="id_kategori" class="form-control ">
                 @foreach($kategori as $kategori)
                     <option value="{{$kategori->id_kategori}}" >{{$kategori -> nama_kategori}}</option>
                 @endforeach
@@ -173,19 +173,19 @@
         $('#hipernim').autocomplete({
             position: { my : "left top", at: "left bottom" },
             source:function(request,response){
-                $.get('/hipernim', 
-                { "searchhipernim": request.term },
+                $.get('/hipernimkk', 
+                { "searchhipernimsKk": request.term },
                 function(data) {
                     $.each(data, function(i,kb){
                         $("#listkata").append('<option value='+kb['id_kb']+'>'+kb['nama_kb']+'</option>');
                     });
                     var array = $.map(data,function(row){
                             return {
-                                value:row.hipernim,
-                                id:row.id_hipernim,
-                                label:row.hipernim,
-                                hipernim:row.hipernim,
-                                desc_hipernim:row.desc_hipernim
+                            value:row.hipernim_kk,
+                            id:row.id_hipernim_kk,
+                            label:row.hipernim_kk,
+                            hipernim:row.hipernim_kk,
+                            desc_hipernim:row.desc_hipernim_kk
                             }
                         })
 
@@ -219,6 +219,7 @@
         if($(katabaru).val() != "" && $(descbaru).val() != ""){
             fd.append('nama',$(katabaru).val());
             fd.append('desc',$(descbaru).val());
+            fd.append('id_kategori',$(id_kategori).val());
 
             $.ajax({
                 headers: {'X-CSRF-TOKEN': $('meta[name-csrf-token]').attr('content') },

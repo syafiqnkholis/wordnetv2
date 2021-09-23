@@ -20,7 +20,8 @@ class VerbController extends Controller{
         $kk =  KataKerja::create([
             'id_kk' => "0",
             'nama_kk' => $request->nama,
-            'desc_kk' => $request->desc
+            'desc_kk' => $request->desc,
+            'id_kategori' => $request->id_kategori
         ]);
 
         $kedalaman = 1;
@@ -32,7 +33,7 @@ class VerbController extends Controller{
                 $result->hipernim_kk = $hipernim[1];
                 $result->desc_hipernim_kk = $hipernim[2];
                 $result->save();
-                $id_hipernim = $result->id_hipernim;
+                $id_hipernim = $result->id_hipernim_kk;
             } else {
                 $id_hipernim = $hipernim[0];
             }
@@ -161,7 +162,7 @@ class VerbController extends Controller{
                     $result->hipernim_kk = $request->hipernim;
                     $result->desc_hipernim_kk = $request->desc_hipernim;
                     $result->save();
-                    $id_hipernim = $result->id_hipernim;
+                    $id_hipernim = $result->id_hipernim_kk;
                 }
         
                 //Menyimpan relasi antara kata benda dan hipernim

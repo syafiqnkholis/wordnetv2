@@ -1,5 +1,5 @@
 @extends('baselayout')
-@section('title', '- Tambah Kata Benda')
+@section('title', '- Edit Kata Kerja')
 @section('baruStatus', 'active')
 @section('content')
 
@@ -47,7 +47,7 @@
                     <div id="hipernim{{$hipernim->kedalaman}}">
                         <p style="color: #fff;">hipernim {{$hipernim->kedalaman}}</p>
                         <div class="card flex-row mb-2 row" style="padding-left: 5px;">    
-                            <div class="col-md-10">{{$hipernim->hipernim}}</br> ➨ {{$hipernim->hipernim->desc_hipernim}}</div>
+                            <div class="col-md-10">{{$hipernim->hipernim->hipernim_kk}}</br> ➨ {{$hipernim->hipernim->desc_hipernim_kk}}</div>
                             <div class="col-md-2">
                                 <a href="/deleteHipernimkk/{{$hipernim->id}}" class="btn btn-danger btn-delete mt-2 mb-2" style="width: 80px;">hapus</a>
                                 <!-- <button type="button" data-id="{{$hipernim->id}}" class="btn btn-danger btn-delete mt-2 mb-2" style="width: 80px;">hapus</button> -->

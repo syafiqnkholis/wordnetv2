@@ -20,7 +20,8 @@ class NounController extends Controller{
         $kb =  KataBenda::create([
             'id_kb' => "0",
             'nama_kb' => $request->nama,
-            'desc_kb' => $request->desc
+            'desc_kb' => $request->desc,
+            'id_kategori' => $request->id_kategori
         ]);
 
         $kedalaman = 1;

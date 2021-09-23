@@ -42,14 +42,13 @@
 
     <style>
 
-        #page-container {
-        position: relative;
-        min-height: 100vh;
-        }
+        // #page-container {
+        // position: relative;
+        // min-height: 100vh;
+        // }
         .pagesize{
             min-height:85vh;
         }
-        .bg {}
 
         /* css navbar */
 

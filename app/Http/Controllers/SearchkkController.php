@@ -41,7 +41,7 @@ class SearchkkController extends Controller
             // ->where('nama_kb', 'LIKE', '%' . $kata . '%')
             ->where('id_kk', '=', $id_kk)->first();
             // if(count($noun) >0){
-                // dd($noun);
+                // dd($verb);
                 return response()->json($verb);//view('pencarian-noun')->withDetails($noun)->withQuery($kata);
             // } else {
                 // Session::flash('error','Maaf kata yang anda cari belum terdapat di basis data kami.');

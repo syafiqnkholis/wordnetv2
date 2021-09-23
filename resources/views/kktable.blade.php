@@ -1,5 +1,5 @@
 @extends('baselayout')
-@section('title', '- Edit Kata Kerja')
+@section('title', '- Kata Kerja')
 @section('editStatus', 'active')
 @section('content')
 <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -158,9 +158,9 @@
                 var relationElement = "";
                 $.each(data['relations'], function(i,relation){
                     relationElement += `
-                    `+relation['hipernim'].hipernim+`</br>
+                    `+relation['hipernim'].hipernim_kk+`</br>
                     <div style="padding-left:7%;">
-                        ➨ `+relation['hipernim'].desc_hipernim+`<br></div>
+                        ➨ `+relation['hipernim'].desc_hipernim_kk+`<br></div>
                     `
                     });
                 var element = `
@@ -175,7 +175,7 @@
                 </div>
                 `;
                 $("#resultContainer").append(element);
-                console.log(kk);
+                // console.log(kk);
         
         }
         )

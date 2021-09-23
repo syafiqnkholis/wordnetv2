@@ -74,7 +74,7 @@
         </div>
     </div>
 </div>
-<div class="row kblayout">
+<div class="row kblayout pagesize">
     <!-- konten tengah  =============================================== -->
     <div class="col-md-8 ">
         <div class="row">

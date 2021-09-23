@@ -41,7 +41,7 @@ class RelationsKk extends Model
 
 	public function hipernim()
 	{
-		return $this->belongsTo(HipernimsKk::class, 'id_hipernim_kk');
+		return $this->belongsTo(HipernimsKk::class, 'id_hipernim');
 	}
 
 	public function kata_kerja()
