@@ -15,7 +15,7 @@ class SearchkkController extends Controller
         
         if($kata){
 
-            $verb = KataKerja::with("relations.hipernimsKk")
+            $verb = KataKerja::with("relations.hipernim")
             // ->where('nama_kb', 'LIKE', '%' . $kata . '%')
             ->where('nama_kk', 'LIKE', $kata . '%')
                             ->get();

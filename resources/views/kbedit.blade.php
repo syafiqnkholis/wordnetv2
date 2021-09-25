@@ -23,9 +23,11 @@
                 </div>
                 <div class="col-md-4">
                 <h6 style="color: #fff;">Deskripsi</h6>
-                    <textarea id="descbaru" name="descbaru" class="form-control" rows="1" >{{$noun->desc_kb}}</textarea>
                     @if($message = Session::get('error4'))
-                        <p style="margin-left:6%; font-size:12px; color:#FF1C1C; font-weight: bold"> {{ $message }} </p>       
+                    <textarea id="descbaru" name="descbaru" class="form-control" rows="1" ></textarea>
+                        <p style="margin-left:6%; font-size:12px; color:#FF1C1C; font-weight: bold"> {{ $message }} </p>   
+                    @else
+                        <textarea id="descbaru" name="descbaru" class="form-control" rows="1" >{{$noun->desc_kb}}</textarea>
                     @endif
                 </div>
                 <div class="col-md-4">

@@ -71,6 +71,17 @@ class VerbController extends Controller{
 
     //Menghapus Kata benda
     public function hapusverb($id){
+        $relationskk = RelationsKk::where("id_kk", $id)->get();
+        foreach($relationskk as $relationkk){
+            $result = RelationsKk::where("id_hipernim", $relationkk->id_hipernim)->count();
+            if($result < 2){ //make sure the hipernim just used in one noun
+                $id_hipernim = $relationkk->id_hipernim;
+                $relationkk->delete(); //detete the relation
+                HipernimsKk::where("id_hipernim_kk", $id_hipernim)->delete(); //and delete the hipernim
+            } else { //delete the relation but not the hipernim
+                $relationkk->delete();
+            }
+        }
         KataKerja::where('id_kk',$id)->delete();
     }
 

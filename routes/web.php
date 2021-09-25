@@ -79,6 +79,7 @@ use Illuminate\Support\Facades\Auth;
     return view('halamanhipernim');
     });
     Route::get('/halamanhipernimkonten/{id}', 'NounController@display')->name('halamanhipernimkonten');
+
     // Route::get('/halamanhipernimkonten', function () {
     //     return view('halamanhipernimkonten');
     // });
@@ -87,10 +88,11 @@ use Illuminate\Support\Facades\Auth;
     Route::get('/halamanhipernimkk', function () {
         return view('halamanhipernimkk');
         });
-    Route::get('/halamanhipernimkontenkk/{id}', 'verbController@display');
-    Route::get('/halamanhipernimkontenkk', function () {
-        return view('halamanhipernimkontenkk');
-    });
+    Route::get('/halamanhipernimkontenkk/{id}', 'VerbController@display')->name('halamanhipernimkontenkk');
+    // Route::get('/halamanhipernimkontenkk/{id}', 'verbController@display');
+    // Route::get('/halamanhipernimkontenkk', function () {
+    //     return view('halamanhipernimkontenkk');
+    // });
     
 
     Route::get('/', function () {

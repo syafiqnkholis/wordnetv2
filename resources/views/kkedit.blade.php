@@ -14,16 +14,20 @@
             <div class="row mt-4">
                 <div class=" col-md-4" >
                     <h6 style="color: #fff;">Kata baru</h6>
-                    <input id="katabaru" name="katabaru" type="text" class="form-control mb-1" value="{{$verb->nama_kk}}" placeholder="masukkan kata" style="width: 100%;">  
                     @if($message = Session::get('error3'))
+                    <input id="katabaru" name="katabaru" type="text" class="form-control mb-1" placeholder="masukkan kata" style="width: 100%;">  
                         <p style="margin-left:6%; font-size:12px; color:#FF1C1C; font-weight: bold"> {{ $message }} </p>       
+                    @else
+                    <input id="katabaru" name="katabaru" type="text" class="form-control mb-1" value="{{$verb->nama_kk}}" placeholder="masukkan kata" style="width: 100%;">  
                     @endif
                 </div>
                 <div class="col-md-4">
                 <h6 style="color: #fff;">Deskripsi</h6>
-                    <textarea id="descbaru" name="descbaru" class="form-control" rows="1" >{{$verb->desc_kk}}</textarea>
                     @if($message = Session::get('error4'))
+                    <textarea id="descbaru" name="descbaru" class="form-control" rows="1" ></textarea>
                         <p style="margin-left:6%; font-size:12px; color:#FF1C1C; font-weight: bold"> {{ $message }} </p>       
+                    @else
+                    <textarea id="descbaru" name="descbaru" class="form-control" rows="1" >{{$verb->desc_kk}}</textarea>
                     @endif
                 </div>
                 <div class="col-md-4">
@@ -33,9 +37,7 @@
                     <option value="{{$kategori->id_kategori}}" selected="{{$kategori->id_kategori == $verb->id_kategori}}">{{$kategori -> nama_kategori}}</option>
                 @endforeach
                 </select>
-                    @if($message = Session::get('error4'))
-                        <p style="margin-left:6%; font-size:12px; color:#FF1C1C; font-weight: bold"> {{ $message }} </p>       
-                    @endif
+                   
                 </div>
             </div>    
 

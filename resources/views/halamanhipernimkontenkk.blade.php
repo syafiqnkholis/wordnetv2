@@ -77,15 +77,15 @@
                 </div> 
                 @guest
                 @else
-                <div class="mx-3 w-100">
-                <h6 style="color: #fff; font-size: 16px;">Tambah komentar</h6>
-                    <form>
-                        @csrf
-                        <textarea class="form-control" id="isi" rows="3"placeholder="Masukkan komentar atau masukan" name="isi"></textarea>
-                        <button class="btn btn-primary" type="submit" style="width:100%; margin-top:1%;">Tambahkan</button>
-                    </form> 
+                    <div class="mx-3 w-100">
+                    <h6 style="color: #fff; font-size: 16px;">Tambah komentar</h6>
+                        <form action="{{route('komentarkk',$verb->id_kk)}}" method="POST">
+                            @csrf
+                            <textarea name="masukkankomentarkk" class="form-control" id="isi" rows="3"placeholder="Masukkan komentar atau masukan" name="isi"></textarea>
+                            <button class="btn btn-primary" type="submit" style="width:100%; margin-top:1%;">Tambahkan</button>
+                        </form> 
+                        </div>  
                     </div>  
-                </div>  
                 @endguest
             </div>
         </div> 
