@@ -68,9 +68,9 @@
                         </div>
                         @foreach($verb->relations as $hipernim)
                         &emsp;
-                        ➥ {{$hipernim->hipernim->hipernim}}
+                        ➥ {{$hipernim->hipernim->hipernim_kk}}
                         <div style="padding-left:7%;">
-                        {{$hipernim->hipernim->desc_hipernim}}
+                        {{$hipernim->hipernim->desc_hipernim_kk}}
                         </div>
                         @endforeach
                     </div>

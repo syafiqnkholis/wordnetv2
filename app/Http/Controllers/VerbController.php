@@ -142,7 +142,7 @@ class VerbController extends Controller{
 
     }
 
-    //Menampilkan sebuah kata benda yang akan diedit beserta hipernimnya
+    //Menampilkan sebuah kata kerja yang akan diedit beserta hipernimnya
     public function edit ($id){
         $verb = KataKerja::with("relations.hipernim")
             ->where('id_kk', '=', $id)->first();
