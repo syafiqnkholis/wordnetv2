@@ -12,7 +12,7 @@ use Redirect;
 
 class VerbController extends Controller{
 
-    //Untuk membuat kata benda baru
+    //Untuk membuat kata kerja baru
     public function simpanverb(Request $request){
 
         // if(isset($request->nama) && isset($request->desc)){
@@ -45,14 +45,6 @@ class VerbController extends Controller{
             $relation->save();
             $kedalaman++;
         }
-
-        // }else{
-        //     if($request->nama == "") Session::flash('error3','Nama tidak boleh kosong.');
-        //         else Session::flash('namakk',$request->nama);
-        //         if($request->desc == "") Session::flash('error4','Deskripsi tidak boleh kosong.');
-        //         else Session::flash('desckk',$request->desc);
-        //         return \Redirect::route('kkbaru', $request->id_kk);
-        // }
     }
 
      //untuk menampilkan form kategori di halaman kkbaru
@@ -62,14 +54,14 @@ class VerbController extends Controller{
         return view('kkbaru')->with(['kategori'=>$kategori]);
     }
 
-    //Menampilkan semua kata benda
+    //Menampilkan semua kata kerja
     public function tampilverb(){
         $tampil= KataKerja::all();
         $data["data"] = $tampil;
         return response()->json($data);
     }
 
-    //Menghapus Kata benda
+    //Menghapus Kata kerja
     public function hapusverb($id){
         $relationskk = RelationsKk::where("id_kk", $id)->get();
         foreach($relationskk as $relationkk){
@@ -85,7 +77,7 @@ class VerbController extends Controller{
         KataKerja::where('id_kk',$id)->delete();
     }
 
-    //Menampilkan sebuah kata benda beserta hipernimnya
+    //Menampilkan sebuah kata kerja beserta hipernimnya
     public function display($id){   
         $verb = KataKerja::with("relations.hipernim")
             ->where('id_kk', '=', $id)->first();
@@ -210,8 +202,6 @@ class VerbController extends Controller{
                 else Session::flash('desc_kk',$request->descbaru);
                 return \Redirect::route('kkedit', $request->id_kk);
             }
-
-            
         }
     }
 

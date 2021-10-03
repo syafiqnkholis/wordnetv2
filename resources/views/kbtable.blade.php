@@ -6,14 +6,14 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                Hapus tabel
+                Hapus kata benda dan relasi hipernim
             </div>
             <div class="modal-body">
                 Apakah anda yakin?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn dbtn-efault" data-dismiss="modal">Cancel</button>
-                <button class="btn btn-danger" id="btn-ok">Delete</button>
+                <button type="button" class="btn dbtn-efault" data-dismiss="modal">Batal</button>
+                <button class="btn btn-danger" id="btn-ok">Hapus</button>
             </div>
         </div>
     </div>

@@ -45,14 +45,6 @@ class NounController extends Controller{
             $relation->save();
             $kedalaman++;
         }
-    
-        // }else{
-        //     if($request->nama == "") Session::flash('error3','Nama tidak boleh kosong.');
-        //         else Session::flash('namakb',$request->nama);
-        //         if($request->desc == "") Session::flash('error4','Deskripsi tidak boleh kosong.');
-        //         else Session::flash('desckb',$request->desc);
-        //         return \Redirect::route('kbbaru', $request->id_kb);
-        // }
     }
 
      //untuk menampilkan form kategori di halaman kbbaru
@@ -106,7 +98,7 @@ class NounController extends Controller{
             $kata2 = KataBenda::with("relations.hipernim")
                     ->where('nama_kb',  $kedua  )
                     ->first();
-        if($kata1 && $kata2){
+            if($kata1 && $kata2){
                 $kedalaman = 9999;
                 foreach($kata1->relations as $satu){
                     foreach($kata2->relations as $dua){
@@ -126,7 +118,7 @@ class NounController extends Controller{
                     Session::flash('error1','Maaf jarak kata tidak dapat ditemukan.');
                     return view('halamanjarakkata');
                 }
-        }else{
+            }else{
             Session::flash('error2','Maaf kata yang anda cari tidak terdapat di basis data kami.');
             return view('halamanjarakkata');
             }
@@ -157,7 +149,6 @@ class NounController extends Controller{
                 //Mendapatkan kedalaman paling besar
                 $noun = Relation::where('id_kb', '=', $request->id_kb)->orderBy('kedalaman','DESC')->first();
                 if($noun) $kedalaman = $noun->kedalaman+1;
-        
                 if(isset($request->id_hipernim)){
                     $id_hipernim = $request->id_hipernim;
                 } else {
@@ -168,7 +159,6 @@ class NounController extends Controller{
                     $result->save();
                     $id_hipernim = $result->id_hipernim;
                 }
-        
                 //Menyimpan relasi antara kata benda dan hipernim
                 $relation = new Relation;
                 $relation->id_hipernim = $id_hipernim;
@@ -186,8 +176,6 @@ class NounController extends Controller{
             return \Redirect::route('kbedit', $request->id_kb);
         } else {
             //Mengubah kata benda
-            //-------------------------------
-
             if(isset($request->katabaru) && isset($request->descbaru)){
             $noun = KataBenda::find($request->id_kb);
             $noun->nama_kb = $request->katabaru;
@@ -195,16 +183,13 @@ class NounController extends Controller{
             $noun->id_kategori = $request->id_kategori;
             $noun->save();
             return \Redirect::route('kbtable');
-
             }else{
                 if($request->katabaru == "") Session::flash('error3','Nama tidak boleh kosong.');
                 else Session::flash('katabenda',$request->katabaru);
                 if($request->descbaru == "") Session::flash('error4','Deskripsi tidak boleh kosong.');
                 else Session::flash('desc',$request->descbaru);
                 return \Redirect::route('kbedit', $request->id_kb);
-            }
-
-            
+            }      
         }
     }
 

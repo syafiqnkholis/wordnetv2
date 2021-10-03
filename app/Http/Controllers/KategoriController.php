@@ -27,9 +27,7 @@ class KategoriController extends Controller
         $kategori = Kategori::create([
             'nama_kategori' => $request -> kategori 
         ]);
-
         return \Redirect::route('kategori');
-
     }
 
     //menampilkan kategori dari database
