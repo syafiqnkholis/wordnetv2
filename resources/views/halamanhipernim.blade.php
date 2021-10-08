@@ -51,5 +51,3 @@
     });
     </script>
 @endsection
-@section("footer")
-

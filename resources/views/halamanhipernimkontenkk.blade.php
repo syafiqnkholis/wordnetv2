@@ -118,6 +118,7 @@
         { "searchverb": $(this).val() },
         function(data) {
             $("#resultContainer").html("");
+            if(data.length<1) $("#resultContainer").html("<p style='color:red'>tidak ada pencarian</p>");
             $.each(data, function(i,kk){
                 var relationElement = "";
                 $.each(kk['relations'], function(i,relation){

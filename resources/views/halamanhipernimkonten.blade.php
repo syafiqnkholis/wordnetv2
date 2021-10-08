@@ -10,10 +10,10 @@
             <div class="col-md-6 mt-6 offset-md-3" >
                 <div class="row">
                     <div class="col-md-12">
-                        <h2 style="color: #fff; font-size: 20px;">Pencarian Kata</h2>
+                        <h2 style="color: #fff; font-size: 20px;">Pencarian Kata Benda</h2>
                     </div>
                     <div class="col-md-12 mt-2" >
-                        <div class="mb-3">
+                        <div class="mt-4 mb-3">
                             <input type="text" id="inputquery" class="form-control mr-1 input" name="searchnoun" placeholder="&#xF002; cari" >
                         </div>
                         <div class="col-md-12 mt-2" id="resultContainer"></div> 
@@ -59,6 +59,7 @@ $('#inputquery').on('input', function(){
     { "searchnoun": $(this).val() },
         function(data) {
             $("#resultContainer").html("");
+            if(data.length<1) $("#resultContainer").html("<p style='color:red'>tidak ada pencarian</p>"); 
             $.each(data, function(i,kb){
                 var relationElement = "";
                 var element = `
@@ -72,12 +73,3 @@ $('#inputquery').on('input', function(){
 
 </script>
 @endsection
-
-                    <!-- tampilan data hipernim
-                    <p>`+kb['desc_kb']+`</p>
-                    <div class=" mb-2" >
-                    `
-                    +relationElement+
-                    `
-                    </div> -->
-
