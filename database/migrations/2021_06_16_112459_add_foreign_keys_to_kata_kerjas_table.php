@@ -11,23 +11,23 @@ class AddForeignKeysToKataKerjasTable extends Migration
      *
      * @return void
      */
-    //dikomen
-    // public function up()
-    // {
-    //     Schema::table('kata_kerjas', function (Blueprint $table) {
-           
-    //     });
-    // }
+    dikomen
+    public function up()
+    {
+        Schema::table('kata_kerjas', function (Blueprint $table) {
+        $table->foreign('id_kategori', 'id_kategori_kk_foreign_key')->references('id_kategori')->on('kategori')->onUpdate('RESTRICT')->onDelete('CASCADE');
+        });
+    }
 
     /**
      * Reverse the migrations.
      *
      * @return void
      */
-    // public function down()
-    // {
-    //     Schema::table('kata_kerjas', function (Blueprint $table) {
-    //         $table->dropForeign('id_kategori_kk_foreign_key');
-    //     });
-    // }
+    public function down()
+    {
+        Schema::table('kata_kerjas', function (Blueprint $table) {
+            $table->dropForeign('id_kategori_kk_foreign_key');
+        });
+    }
 }

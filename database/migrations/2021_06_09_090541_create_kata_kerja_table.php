@@ -17,8 +17,7 @@ class CreateKataKerjaTable extends Migration
             $table->bigIncrements('id_kk');
             $table->string('nama_kk', 37)->nullable();
             $table->string('desc_kk')->nullable();
-            // $table->unsignedBigInteger('id_kategori')->nullable()->index('id_kategori_foreign_key');
-            $table->unsignedBigInteger('id_kategori')->nullable();
+            $table->unsignedBigInteger('id_kategori')->nullable()->index('id_kategori_foreign_key');
         });
     }
 
