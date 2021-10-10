@@ -17,7 +17,8 @@ class CreateKategoriTable extends Migration
             $table->bigIncrements('id_kategori');
             $table->string('nama_kategori', 37)->nullable();
             //pindah dari tabel add foreign keys to kata kerjas
-            $table->foreign('id_kategori', 'id_kategori_kk_foreign_key')->references('id_kategori')->on('kategori')->onUpdate('RESTRICT')->onDelete('CASCADE');
+            // $table->foreign('id_kategori', 'id_kategori_kk_foreign_key')->references('id_kategori')->on('kategori')->onUpdate('RESTRICT')->onDelete('CASCADE');
+            $table->foreign('id_kategori')->references('id_kategori')->on('users');
         });
     }
 
